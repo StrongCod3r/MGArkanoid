@@ -1,0 +1,19 @@
+﻿<Properties StartupConfiguration="{D5BF88EF-C941-48A6-A337-5273A65F455A}|Default">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Arkanoid\Engine\E2D.cs">
+    <Files>
+      <File FileName="Arkanoid\Game\Entities\Ball.cs" Line="1" Column="1" />
+      <File FileName="Arkanoid\Game\Entities\Paddle.cs" Line="1" Column="1" />
+      <File FileName="Arkanoid\Game\Entities\Brick.cs" Line="1" Column="1" />
+      <File FileName="Arkanoid\Engine\Scene.cs" Line="16" Column="34" />
+      <File FileName="Arkanoid\Engine\Entity.cs" Line="1" Column="1" />
+      <File FileName="Arkanoid\Engine\E2D.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Arkanoid PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>
