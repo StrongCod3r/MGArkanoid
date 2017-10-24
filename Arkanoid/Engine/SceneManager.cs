@@ -12,7 +12,7 @@ namespace Engine2D
 {
     public class SceneManager : DrawableGameComponent
     {
-        public ContentManager Content { get => Game.Content; }
+		public ContentManager Content { get { return Game.Content; } }
         private SpriteBatch spriteBatch;
         //private List<Scene> scenes;
         private Scene currentScene;

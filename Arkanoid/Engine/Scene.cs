@@ -13,10 +13,10 @@ namespace Engine2D
     public class Scene : DrawableGameComponent
     {
         private String name;
-        public string Name { get => name; set => name = value; }
+		public string Name { get { return name; } set { name = value; } }
         public SpriteBatch spriteBatch;
         public E2D Engine;
-        public ContentManager Content { get => Game.Content; }
+		public ContentManager Content { get { return Game.Content; } }
 
         protected List<Entity> entities;
         public List<Entity> Entities
