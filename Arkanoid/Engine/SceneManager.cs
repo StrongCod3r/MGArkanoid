@@ -18,7 +18,7 @@ namespace Engine2D
         private Scene currentScene;
         private E2D Engine;
 
-        public SceneManager(E2D engine) : base(engine.game)
+        public SceneManager(E2D engine) : base(engine)
         {
             Engine = engine;
             //scenes = new List<Scene>();
@@ -57,7 +57,7 @@ namespace Engine2D
 
         protected override void LoadContent()
         {
-            spriteBatch = new SpriteBatch(Engine.game.GraphicsDevice);
+            spriteBatch = new SpriteBatch(Engine.GraphicsDevice);
         }
 
         protected override void UnloadContent()

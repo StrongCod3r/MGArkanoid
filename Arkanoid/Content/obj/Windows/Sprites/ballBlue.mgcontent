@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/sc/Documents/GitHub/MGArkanoid/Arkanoid/Content/Sprites/paddleRed.png</SourceFile>
-  <SourceTime>2012-11-07T20:33:37.2872087+01:00</SourceTime>
-  <DestFile>C:/Users/sc/Documents/GitHub/MGArkanoid/Arkanoid/Content/bin/Windows/Sprites/paddleRed.xnb</DestFile>
-  <DestTime>2017-10-25T00:51:30.441851+02:00</DestTime>
+  <SourceFile>C:/Users/sc/Documents/GitHub/MGArkanoid/Arkanoid/Content/Sprites/ballBlue.png</SourceFile>
+  <SourceTime>2012-11-07T20:33:37.2892088+01:00</SourceTime>
+  <DestFile>C:/Users/sc/Documents/GitHub/MGArkanoid/Arkanoid/Content/bin/Windows/Sprites/ballBlue.xnb</DestFile>
+  <DestTime>2017-10-25T00:51:32.0672549+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T16:05:36+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

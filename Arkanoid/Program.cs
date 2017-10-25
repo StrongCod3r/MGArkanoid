@@ -14,9 +14,17 @@ namespace Arkanoid
         [STAThread]
         static void Main()
         {
-            var game = new E2D("Arkanoid", 1080, 700, false);
-            game.SceneManager.LoadScene(new Intro(game), true);
-            game.Run();
+            using (var game = new E2D("Arkanoid", 1080, 700, false))
+            {
+#if DEBUG
+                game.SceneManager.LoadScene(new StartScene(game), true);
+#else
+                game.SceneManager.LoadScene(new Intro(game), true);
+#endif
+                game.Run();
+            }
+            
+
         }
     }
 #endif

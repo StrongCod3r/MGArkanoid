@@ -4,10 +4,12 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/sc/source/repos/Arkanoid_sinHerencia/Arkanoid/Content/Sprites/paddleRed.png</File>
-    <File>C:/Users/sc/source/repos/Arkanoid_sinHerencia/Arkanoid/Content/Sprites/paddleBlu.png</File>
-    <File>C:/Users/sc/source/repos/Arkanoid_sinHerencia/Arkanoid/Content/Sprites/paddleGato.png</File>
-    <File>C:/Users/sc/source/repos/Arkanoid_sinHerencia/Arkanoid/Content/Sprites/background2.jpg</File>
-    <File>C:/Users/sc/source/repos/Arkanoid_sinHerencia/Arkanoid/Content/Sprites/background1.png</File>
+    <File>C:/Users/sc/Documents/GitHub/MGArkanoid/Arkanoid/Content/Sprites/paddleRed.png</File>
+    <File>C:/Users/sc/Documents/GitHub/MGArkanoid/Arkanoid/Content/Sprites/paddleBlu.png</File>
+    <File>C:/Users/sc/Documents/GitHub/MGArkanoid/Arkanoid/Content/Sprites/paddleGato.png</File>
+    <File>C:/Users/sc/Documents/GitHub/MGArkanoid/Arkanoid/Content/Sprites/background2.jpg</File>
+    <File>C:/Users/sc/Documents/GitHub/MGArkanoid/Arkanoid/Content/Sprites/background1.png</File>
+    <File>C:/Users/sc/Documents/GitHub/MGArkanoid/Arkanoid/Content/Sprites/ballBlue.png</File>
+    <File>C:/Users/sc/Documents/GitHub/MGArkanoid/Arkanoid/Content/Sprites/ballGrey.png</File>
   </SourceFiles>
 </SourceFileCollection>

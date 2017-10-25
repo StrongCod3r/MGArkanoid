@@ -25,7 +25,9 @@ namespace Arkanoid.Scenes
 
         public override void Initialize()
         {
-            AddEntity(new Paddle(480, Engine.game.GraphicsDevice.Viewport.Height - 50));
+            var paddle = new Paddle(480, Engine.GraphicsDevice.Viewport.Height - 50);
+            AddEntity(paddle);
+            AddEntity(new Ball(300, 300, paddle));
             position = Vector2.Zero;
 
             base.Initialize();
@@ -40,13 +42,14 @@ namespace Arkanoid.Scenes
 
         public override void Update(GameTime gameTime)
         {
-            base.Update(gameTime);
-
+            
             if (Keyboard.GetState().IsKeyDown(Keys.Left))
                 position.X -= 5;
 
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
                 position.X += 5;
+
+            base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)

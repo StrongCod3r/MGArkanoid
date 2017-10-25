@@ -13,7 +13,7 @@ namespace Engine2D
     public abstract class Entity
     {
         public E2D Engine;
-		public ContentManager Content { get { return Engine.game.Content; } }
+		public ContentManager Content { get { return Engine.Content; } }
 
         public virtual void Initialize() { }
         public virtual void LoadContent() { }

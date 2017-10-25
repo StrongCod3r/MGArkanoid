@@ -16,7 +16,7 @@ namespace Engine2D
 		public string Name { get { return name; } set { name = value; } }
         public SpriteBatch spriteBatch;
         public E2D Engine;
-		public ContentManager Content { get { return Game.Content; } }
+		public ContentManager Content { get { return Engine.Content; } }
 
         protected List<Entity> entities;
         public List<Entity> Entities
@@ -27,7 +27,7 @@ namespace Engine2D
         private bool load = true;
         
 
-        public Scene(E2D engine) : base(engine.game)
+        public Scene(E2D engine) : base(engine)
         {
             Engine = engine;
             entities = new List<Entity>();
@@ -54,7 +54,7 @@ namespace Engine2D
 
         protected override void LoadContent()
         {
-            spriteBatch = new SpriteBatch(Engine.game.GraphicsDevice);
+            spriteBatch = new SpriteBatch(Engine.GraphicsDevice);
 
             foreach (Entity e in entities)
             {
