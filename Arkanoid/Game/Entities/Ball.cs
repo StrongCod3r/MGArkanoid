@@ -57,7 +57,7 @@ namespace Arkanoid
             // Capturada
             if (!caught)
             {
-                position += (direction * speed * gameTime.ElapsedGameTime.Seconds);
+                position += (direction * speed * (float)gameTime.ElapsedGameTime.TotalSeconds);
 
                 if (IsPaddleCollide())
                 {

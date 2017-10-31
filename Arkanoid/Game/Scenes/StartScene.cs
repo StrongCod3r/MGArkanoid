@@ -25,7 +25,7 @@ namespace Arkanoid.Scenes
 
         public override void Initialize()
         {
-            var paddle = new Paddle(480, Engine.GraphicsDevice.Viewport.Height - 50);
+            var paddle = new Paddle(480, Engine.GraphicsDevice.Viewport.Height - 100);
             AddEntity(paddle);
             AddEntity(new Ball(300, 300, paddle));
             position = Vector2.Zero;

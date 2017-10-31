@@ -20,7 +20,7 @@ namespace Arkanoid
         public Paddle(int x, int y)
         {
             position = new Vector2(x, y);
-            size = new Vector2(120, 30);
+            size = new Vector2(210, 55);
         }
 
         public override void Initialize()
@@ -37,10 +37,10 @@ namespace Arkanoid
         public override void Update(GameTime gameTime)
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Left))
-                position.X -= 5;
+                position.X -= 10;
 
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
-                position.X += 5;
+                position.X += 10;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
