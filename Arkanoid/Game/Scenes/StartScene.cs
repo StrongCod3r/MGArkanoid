@@ -29,6 +29,8 @@ namespace Arkanoid.Scenes
         {
             var paddle = new Paddle(480, Game.SCREEN_HEIGHT - 55);
             var ball = new Ball(300, 300, paddle);
+            paddle.AppendBall(ball);
+
             AddEntity(paddle);
             AddEntity(ball);
 

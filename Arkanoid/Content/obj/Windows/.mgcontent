@@ -4,18 +4,17 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/sc/Documents/GitHub/MGArkanoid/Arkanoid/Content/Font/DebugFont.spritefont</File>
-    <File>C:/Users/sc/Documents/GitHub/MGArkanoid/Arkanoid/Content/Sprites/ball_gray.png</File>
-    <File>C:/Users/sc/Documents/GitHub/MGArkanoid/Arkanoid/Content/Sprites/brick_blue_rectangle.png</File>
-    <File>C:/Users/sc/Documents/GitHub/MGArkanoid/Arkanoid/Content/Sprites/brick_gray_rectangle.png</File>
-    <File>C:/Users/sc/Documents/GitHub/MGArkanoid/Arkanoid/Content/Sprites/brick_green_rectangle.png</File>
-    <File>C:/Users/sc/Documents/GitHub/MGArkanoid/Arkanoid/Content/Sprites/brick_purple_rectangle.png</File>
-    <File>C:/Users/sc/Documents/GitHub/MGArkanoid/Arkanoid/Content/Sprites/brick_yellow_rectangle.png</File>
-    <File>C:/Users/sc/Documents/GitHub/MGArkanoid/Arkanoid/Content/Sprites/paddle_blue.png</File>
-    <File>C:/Users/sc/Documents/GitHub/MGArkanoid/Arkanoid/Content/Sprites/paddle_red.png</File>
-    <File>C:/Users/sc/Documents/GitHub/MGArkanoid/Arkanoid/Content/Sprites/paddle_tech.png</File>
-    <File>C:/Users/sc/Documents/GitHub/MGArkanoid/Arkanoid/Content/Sprites/background_1.png</File>
-    <File>C:/Users/sc/Documents/GitHub/MGArkanoid/Arkanoid/Content/Sprites/background_2.jpg</File>
-    <File>C:/Users/sc/Documents/GitHub/MGArkanoid/Arkanoid/Content/Sprites/ball_blue.png</File>
+    <File>C:/Users/Gato/Documents/MGArkanoid/Arkanoid/Content/Sprites/ball_gray.png</File>
+    <File>C:/Users/Gato/Documents/MGArkanoid/Arkanoid/Content/Sprites/brick_blue_rectangle.png</File>
+    <File>C:/Users/Gato/Documents/MGArkanoid/Arkanoid/Content/Sprites/brick_gray_rectangle.png</File>
+    <File>C:/Users/Gato/Documents/MGArkanoid/Arkanoid/Content/Sprites/brick_green_rectangle.png</File>
+    <File>C:/Users/Gato/Documents/MGArkanoid/Arkanoid/Content/Sprites/brick_purple_rectangle.png</File>
+    <File>C:/Users/Gato/Documents/MGArkanoid/Arkanoid/Content/Sprites/brick_yellow_rectangle.png</File>
+    <File>C:/Users/Gato/Documents/MGArkanoid/Arkanoid/Content/Sprites/paddle_blue.png</File>
+    <File>C:/Users/Gato/Documents/MGArkanoid/Arkanoid/Content/Sprites/paddle_red.png</File>
+    <File>C:/Users/Gato/Documents/MGArkanoid/Arkanoid/Content/Sprites/paddle_tech.png</File>
+    <File>C:/Users/Gato/Documents/MGArkanoid/Arkanoid/Content/Sprites/background_1.png</File>
+    <File>C:/Users/Gato/Documents/MGArkanoid/Arkanoid/Content/Sprites/background_2.jpg</File>
+    <File>C:/Users/Gato/Documents/MGArkanoid/Arkanoid/Content/Sprites/ball_blue.png</File>
   </SourceFiles>
 </SourceFileCollection>

@@ -17,6 +17,10 @@ namespace Arkanoid.Entities
     {
         Texture2D paddleSprite;
         float speed;
+        List<Ball> currentBalls = new List<Ball>();
+        private Random randomGen = new Random();
+        private KeyboardState keyState;
+        private KeyboardState lastKeyState;
 
 
         public Paddle(int x, int y)
@@ -38,17 +42,44 @@ namespace Arkanoid.Entities
 
         public override void Update(GameTime gameTime)
         {
+            keyState = Keyboard.GetState();
+
             if (Keyboard.GetState().IsKeyDown(Keys.Left) && position.X > 0)
                 position.X -= 10;
 
             if (Keyboard.GetState().IsKeyDown(Keys.Right) && (position.X + size.X < Game.SCREEN_WIDTH))
                 position.X += 10;
 
+            
+            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+                ConectBall(); 
+
+            if (Keyboard.GetState().IsKeyUp(Keys.Space) && lastKeyState.IsKeyDown(Keys.Space))
+                currentBalls[0].direction.X = (float)(randomGen.NextDouble()-0.5);
+
+
+            lastKeyState = keyState;
         }
 
         public override void Draw(GameTime gameTime)
         {
             SB.Draw(paddleSprite, new Rectangle((int)position.X, (int)position.Y, (int)size.X, (int)size.Y), Color.White);
+        }
+
+
+        //eigenmethods (reference xD)
+        public void AppendBall(Ball ball)
+        {
+            currentBalls.Add(ball);
+        }
+
+
+        //unfinished, by now it works independently of the position of the ball, and just for 1 on screen, and teleport the ball
+        private void ConectBall()
+        {
+            currentBalls[0].direction = new Vector2(1, -1);
+            currentBalls[0].position.X = this.position.X + this.size.X /2 - currentBalls[0].size.X;
+            currentBalls[0].position.Y = this.position.Y - 50;
         }
     }
 }
