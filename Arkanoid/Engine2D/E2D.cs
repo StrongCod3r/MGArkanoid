@@ -30,6 +30,7 @@ namespace Engine2D
             get { return screen.Y; }
         }
 
+        private SpriteFont debugFont;
 
         public E2D(String name, int width, int height, bool fullScreen = false)
         {
@@ -46,6 +47,7 @@ namespace Engine2D
 
             SceneManager = new SceneManager(this);
             Components.Add(SceneManager);
+            
         }
 
         public void ChangeResolution(int width, int height)
@@ -71,6 +73,9 @@ namespace Engine2D
             graphicsDevice.SynchronizeWithVerticalRetrace = false;
             IsFixedTimeStep = false;
 
+            ////FrameRate is 30fps
+            //TargetElapsedTime = TimeSpan.FromTicks(333333);
+
 
             base.Initialize();
         }
@@ -84,7 +89,10 @@ namespace Engine2D
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            debugFont = Content.Load<SpriteFont>("Font/debugFont");
+
+            var fpsCounter = new FpsCounter(this, debugFont, new Vector2( 5, 5));
+            Components.Add(fpsCounter);
         }
 
         /// <summary>

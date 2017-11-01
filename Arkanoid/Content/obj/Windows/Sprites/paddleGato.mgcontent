@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/sc/Documents/GitHub/MGArkanoid/Arkanoid/Content/Sprites/paddleGato.png</SourceFile>
-  <SourceTime>2017-10-22T00:44:45.2941585+02:00</SourceTime>
+  <SourceTime>2017-11-01T00:37:40.3325644+01:00</SourceTime>
   <DestFile>C:/Users/sc/Documents/GitHub/MGArkanoid/Arkanoid/Content/bin/Windows/Sprites/paddleGato.xnb</DestFile>
-  <DestTime>2017-10-25T00:51:30.5469338+02:00</DestTime>
+  <DestTime>2017-11-01T10:50:13.1628027+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T16:05:36+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

@@ -41,6 +41,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Engine2D\FpsCounter.cs" />
     <Compile Include="Game\Entities\BrickFactory.cs" />
     <Compile Include="Game\Entities\CharacterBase.cs" />
     <Compile Include="Engine2D\E2D.cs" />
