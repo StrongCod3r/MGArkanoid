@@ -15,6 +15,9 @@ namespace Engine2D
         public E2D Game;
 		public ContentManager Content { get { return Game.Content; } }
         public SpriteBatch SB;
+        public string name;
+        public bool visible;
+        public bool enable;
 
         public virtual void Initialize() { }
         public virtual void LoadContent() { }

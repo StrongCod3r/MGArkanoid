@@ -9,8 +9,9 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Media;
 using Engine2D;
+using Arkanoid.Entities;
 
-namespace Arkanoid
+namespace Arkanoid.Entities
 {
     class Ball : CharacterBase
     {
@@ -41,7 +42,7 @@ namespace Arkanoid
 
         public override void LoadContent()
         {
-            ballTexture = Content.Load<Texture2D>("Sprites/ballBlue");
+            ballTexture = Content.Load<Texture2D>(Assets.ball[0]);
         }
 
         public override void Update(GameTime gameTime)

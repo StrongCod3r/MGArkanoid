@@ -7,7 +7,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
-using Arkanoid.Scenes;
 
 
 namespace Engine2D
@@ -15,7 +14,7 @@ namespace Engine2D
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
-    public class E2D : Game
+    public class E2D : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphicsDevice;
         private SpriteBatch spriteBatch;
@@ -29,8 +28,6 @@ namespace Engine2D
         {
             get { return screen.Y; }
         }
-
-        private SpriteFont debugFont;
 
         public E2D(String name, int width, int height, bool fullScreen = false)
         {
@@ -65,16 +62,18 @@ namespace Engine2D
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
             // Center Window
             Window.Position = new Point((GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width / 2) - (graphicsDevice.PreferredBackBufferWidth / 2),
                             (GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height / 2) - (graphicsDevice.PreferredBackBufferHeight / 2));
 
-            //graphicsDevice.SynchronizeWithVerticalRetrace = false;
+
             //IsFixedTimeStep = false;
+            graphicsDevice.SynchronizeWithVerticalRetrace = false;
+            graphicsDevice.ApplyChanges();
 
             ////FrameRate is 30fps
             //TargetElapsedTime = TimeSpan.FromTicks(333333);
+
 
 
             base.Initialize();
@@ -89,7 +88,7 @@ namespace Engine2D
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 #if DEBUG
-            debugFont = Content.Load<SpriteFont>("Font/debugFont");
+            var debugFont = Content.Load<SpriteFont>("Font/debugFont");
 
             var fpsCounter = new FpsCounter(this, debugFont, new Vector2( 5, 5));
             Components.Add(fpsCounter);

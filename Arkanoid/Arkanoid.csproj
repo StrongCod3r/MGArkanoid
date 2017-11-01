@@ -42,7 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Engine2D\FpsCounter.cs" />
-    <Compile Include="Game\Entities\BrickFactory.cs" />
+    <Compile Include="Game\BrickFactory.cs" />
     <Compile Include="Game\Entities\CharacterBase.cs" />
     <Compile Include="Engine2D\E2D.cs" />
     <Compile Include="Engine2D\Entity.cs" />
@@ -51,6 +51,7 @@
     <Compile Include="Game\Entities\Ball.cs" />
     <Compile Include="Game\Entities\Brick.cs" />
     <Compile Include="Game\Entities\Paddle.cs" />
+    <Compile Include="Game\Assets.cs" />
     <Compile Include="Game\Scenes\IntroScene.cs" />
     <Compile Include="Game\Scenes\StartScene.cs" />
     <Compile Include="Engine2D\Primitives2D.cs" />
@@ -65,6 +66,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Levels\level_1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>

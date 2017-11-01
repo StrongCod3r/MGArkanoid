@@ -8,8 +8,10 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Engine2D;
+using Arkanoid.Entities;
 
-namespace Arkanoid
+
+namespace Arkanoid.Entities
 {
     class Paddle : CharacterBase
     {
@@ -30,7 +32,7 @@ namespace Arkanoid
 
         public override void LoadContent()
         {
-            paddleSprite = Content.Load<Texture2D>("Sprites/paddleGato");
+            paddleSprite = Content.Load<Texture2D>(Assets.paddle[0]);
             
         }
 

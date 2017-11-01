@@ -7,8 +7,10 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
-
 using Engine2D;
+using Arkanoid;
+using Arkanoid.Entities;
+
 
 namespace Arkanoid.Scenes
 {
@@ -20,22 +22,25 @@ namespace Arkanoid.Scenes
 
         public StartScene()
         {
-            
+            position = Vector2.Zero;
         }
 
         public override void Initialize()
         {
             var paddle = new Paddle(480, Game.SCREEN_HEIGHT - 55);
+            var ball = new Ball(300, 300, paddle);
             AddEntity(paddle);
-            AddEntity(new Ball(300, 300, paddle));
-            position = Vector2.Zero;
+            AddEntity(ball);
+
+            var brickFactory = new BrickFactory(this, Assets.Level[0], new Point(130, 50));
+            brickFactory.LoadLevel();
 
             base.Initialize();
         }
 
         public override void LoadContent()
         {
-            backgrounTexture = Content.Load<Texture2D>("Sprites/background2");
+            backgrounTexture = Content.Load<Texture2D>(Assets.background[1]);
 
             base.LoadContent();
         }
@@ -51,8 +56,6 @@ namespace Arkanoid.Scenes
             SB.Begin();
             //-------------------------------------
             SB.Draw(backgrounTexture, new Rectangle(0, 0, Game.SCREEN_WIDTH, Game.SCREEN_HEIGHT), Color.White);
-
-            Primitives2D.PutPixel(SB, new Vector2(300, 300), Color.Red);
 
             //-------------------------------------
             SB.End();
