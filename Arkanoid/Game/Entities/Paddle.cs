@@ -36,14 +36,11 @@ namespace Arkanoid
 
         public override void Update(GameTime gameTime)
         {
-            if (position.X > 0 && (position.X + size.X < Game.SCREEN_WIDTH))
-            {
-                if (Keyboard.GetState().IsKeyDown(Keys.Left))
-                    position.X -= 10;
+            if (Keyboard.GetState().IsKeyDown(Keys.Left) && position.X > 0)
+                position.X -= 10;
 
-                if (Keyboard.GetState().IsKeyDown(Keys.Right))
-                    position.X += 10;
-            }
+            if (Keyboard.GetState().IsKeyDown(Keys.Right) && (position.X + size.X < Game.SCREEN_WIDTH))
+                position.X += 10;
 
         }
 
