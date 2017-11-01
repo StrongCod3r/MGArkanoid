@@ -17,16 +17,23 @@ namespace Engine2D
     /// </summary>
     public class E2D : Game
     {
-        public GraphicsDeviceManager graphicsDevice;
-        SpriteBatch spriteBatch;
+        GraphicsDeviceManager graphicsDevice;
+        private SpriteBatch spriteBatch;
         public SceneManager SceneManager;
-        public int SCREEN_WIDTH;
-        public int SCREEN_HEIGHT;
+        private Point screen;
+        public int SCREEN_WIDTH
+        {
+            get { return screen.X; }
+        }
+        public int SCREEN_HEIGHT
+        {
+            get { return screen.Y; }
+        }
+
 
         public E2D(String name, int width, int height, bool fullScreen = false)
         {
-            SCREEN_WIDTH = width;
-            SCREEN_HEIGHT = height;
+            screen = new Point(width, height);
 
             graphicsDevice = new GraphicsDeviceManager(this)
             {
@@ -41,6 +48,13 @@ namespace Engine2D
             Components.Add(SceneManager);
         }
 
+        public void ChangeResolution(int width, int height)
+        {
+            graphicsDevice.PreferredBackBufferWidth = width;
+            graphicsDevice.PreferredBackBufferHeight = height;
+            graphicsDevice.ApplyChanges();
+        }
+
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
         /// This is where it can query for any required services and load any non-graphic
@@ -50,6 +64,13 @@ namespace Engine2D
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            // Center Window
+            Window.Position = new Point((GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width / 2) - (graphicsDevice.PreferredBackBufferWidth / 2),
+                            (GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height / 2) - (graphicsDevice.PreferredBackBufferHeight / 2));
+
+            graphicsDevice.SynchronizeWithVerticalRetrace = false;
+            IsFixedTimeStep = false;
+
 
             base.Initialize();
         }

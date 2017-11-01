@@ -47,11 +47,6 @@ namespace Engine2D
 
         public override void Initialize()
         {
-            // Center Window
-            Game.Window.Position = new Point((GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width / 2) - (Engine.graphicsDevice.PreferredBackBufferWidth / 2),
-                            (GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height / 2) - (Engine.graphicsDevice.PreferredBackBufferHeight / 2));
-
-
 
             base.Initialize();
         }

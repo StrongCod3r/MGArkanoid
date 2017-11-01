@@ -42,11 +42,6 @@ namespace Arkanoid.Scenes
 
         public override void Update(GameTime gameTime)
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.Left))
-                position.X -= 5;
-
-            if (Keyboard.GetState().IsKeyDown(Keys.Right))
-                position.X += 5;
 
             base.Update(gameTime);
         }

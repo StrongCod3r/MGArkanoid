@@ -19,7 +19,7 @@ namespace Arkanoid
 #if DEBUG
                 game.SceneManager.LoadScene(new StartScene(), true);
 #else
-                game.SceneManager.LoadScene(new Intro(game), true);
+                game.SceneManager.LoadScene(new IntroScene(game), true);
 #endif
                 game.Run();
             }

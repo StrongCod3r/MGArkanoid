@@ -50,7 +50,7 @@
     <Compile Include="Game\Entities\Ball.cs" />
     <Compile Include="Game\Entities\Brick.cs" />
     <Compile Include="Game\Entities\Paddle.cs" />
-    <Compile Include="Game\Scenes\Intro.cs" />
+    <Compile Include="Game\Scenes\IntroScene.cs" />
     <Compile Include="Game\Scenes\StartScene.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
