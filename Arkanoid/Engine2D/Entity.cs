@@ -12,12 +12,13 @@ namespace Engine2D
 {
     public abstract class Entity
     {
-        public E2D Engine;
-		public ContentManager Content { get { return Engine.Content; } }
+        public E2D Game;
+		public ContentManager Content { get { return Game.Content; } }
+        public SpriteBatch SB;
 
         public virtual void Initialize() { }
         public virtual void LoadContent() { }
         public virtual void Update(GameTime gameTime) { }
-        public virtual void Draw(SpriteBatch spriteBatch) { }
+        public virtual void Draw(GameTime gameTime) { }
     }
 }

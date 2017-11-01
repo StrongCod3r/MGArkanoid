@@ -18,19 +18,17 @@ namespace Arkanoid.Scenes
         Texture2D backgrounTexture;
         float timeCount = 0f;
 
-        public Intro(E2D engine) : base(engine)
+        public Intro()
         {
 
         }
 
         public override void Initialize()
         {
-            Game.Window.Title = "Arkanoid";
-
             base.Initialize();
         }
 
-        protected override void LoadContent()
+        public override void LoadContent()
         {
             backgrounTexture = Content.Load<Texture2D>("Sprites/background1");
 
@@ -42,19 +40,19 @@ namespace Arkanoid.Scenes
             timeCount += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             if (timeCount > 2f)
-                Engine.SceneManager.LoadScene(new StartScene(Engine), true);
+                Game.SceneManager.LoadScene(new StartScene(), true);
 
             base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)
         {
-            spriteBatch.Begin();
+            SB.Begin();
             //-------------------------------------
-            spriteBatch.Draw(backgrounTexture, new Rectangle(0, 0, Game.GraphicsDevice.Viewport.Width, Game.GraphicsDevice.Viewport.Height), Color.White);
+            SB.Draw(backgrounTexture, new Rectangle(0, 0, Game.GraphicsDevice.Viewport.Width, Game.GraphicsDevice.Viewport.Height), Color.White);
 
             //-------------------------------------
-            spriteBatch.End();
+            SB.End();
 
             base.Draw(gameTime);
         }

@@ -10,13 +10,12 @@ using Microsoft.Xna.Framework.Content;
 
 namespace Engine2D
 {
-    public class Scene : DrawableGameComponent
+    public class Scene
     {
         private String name;
-		public string Name { get { return name; } set { name = value; } }
-        public SpriteBatch spriteBatch;
-        public E2D Engine;
-		public ContentManager Content { get { return Engine.Content; } }
+        public string Name { get { return name; } set { name = value; } }
+        public E2D Game;
+		public ContentManager Content { get { return Game.Content; } }
 
         protected List<Entity> entities;
         public List<Entity> Entities
@@ -24,12 +23,12 @@ namespace Engine2D
             get { return this.entities; }
         }
 
-        private bool load = true;
-        
+        public bool isLoaded = false;
 
-        public Scene(E2D engine) : base(engine)
+        protected SpriteBatch SB;
+
+        public Scene()
         {
-            Engine = engine;
             entities = new List<Entity>();
         }
 
@@ -37,60 +36,58 @@ namespace Engine2D
         {
             if (entity != null)
             {
-                entity.Engine = Engine;
-                //entity.LoadContent();
+                entity.Game = Game;
                 entities.Add(entity);
             }  
         }
 
-        public override void Initialize()
+        public virtual void Initialize()
         {
+            this.LoadContent();
+
             foreach (Entity e in entities)
             {
+                e.Game = this.Game;
+                e.SB = this.SB;
                 e.Initialize();
+                e.LoadContent();
             }
-            base.Initialize();
+
+            isLoaded = true;
+  
         }
 
-        protected override void LoadContent()
+        public virtual void LoadContent()
         {
-            spriteBatch = new SpriteBatch(Engine.GraphicsDevice);
+            SB = new SpriteBatch(Game.GraphicsDevice);
 
             foreach (Entity e in entities)
             {
                 e.LoadContent();
             }
         }
-        public override void Update(GameTime gameTime)
+
+        public virtual void UnloadContent() { }
+
+
+        public virtual void Update(GameTime gameTime)
         {
             foreach(Entity e in entities)
             {
                 e.Update(gameTime);
             }
-            base.Update(gameTime);
         }
 
-        public override void Draw(GameTime gameTime)
+        public virtual void Draw(GameTime gameTime)
         {
-            spriteBatch.Begin();
-
-            if (load)
-            {
-                foreach (Entity e in entities)
-                {
-                    e.LoadContent();
-                }
-                load = false;
-            }
-
+            SB.Begin();
+            //-------------------------------------
             foreach (Entity e in entities)
             {
-                e.Draw(spriteBatch);
+                e.Draw(gameTime);
             }
-
-            spriteBatch.End();
-
-            base.Draw(gameTime);
+            //-------------------------------------
+            SB.End();
         }
     }
 }

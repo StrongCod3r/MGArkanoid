@@ -21,8 +21,6 @@ namespace Arkanoid
         private Vector2 direction;
         private float acceleration = 5;
         private float speed = 600;
-        private int SCREEN_WIDTH;
-        private int SCREEN_HEIGHT;
 
         Paddle paddle;
 
@@ -38,18 +36,12 @@ namespace Arkanoid
 
         public override void Initialize()
         {
-            SCREEN_WIDTH = Engine.GraphicsDevice.Viewport.Width;
-            SCREEN_HEIGHT = Engine.GraphicsDevice.Viewport.Height;
 
-            base.Initialize();
         }
 
         public override void LoadContent()
         {
             ballTexture = Content.Load<Texture2D>("Sprites/ballBlue");
-
-
-            base.LoadContent();
         }
 
         public override void Update(GameTime gameTime)
@@ -71,15 +63,13 @@ namespace Arkanoid
                 //notifyObserver();
             }
 
-            base.Update(gameTime);
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(GameTime gameTime)
         {
             if (!ballTexture.Equals(null))
-                spriteBatch.Draw(ballTexture, new Rectangle((int)position.X, (int)position.Y, (int)size.X, (int)size.Y), Color.White);
+                SB.Draw(ballTexture, new Rectangle((int)position.X, (int)position.Y, (int)size.X, (int)size.Y), Color.White);
 
-            base.Draw(spriteBatch);
         }
 
 
@@ -97,7 +87,7 @@ namespace Arkanoid
 
         bool IsCollideX()
         {
-            if(this.position.X + 2 * this.radius >= SCREEN_WIDTH ||
+            if(this.position.X + 2 * this.radius >= Game.SCREEN_WIDTH ||
                this.position.X <= 0)
             {
                 return true;
@@ -125,7 +115,7 @@ namespace Arkanoid
 
         bool IsCollideY()
         {
-            if(this.position.Y + 2 * this.radius >= SCREEN_HEIGHT ||
+            if(this.position.Y + 2 * this.radius >= Game.SCREEN_HEIGHT ||
                this.position.Y <= 0) {
                 return true;
             }

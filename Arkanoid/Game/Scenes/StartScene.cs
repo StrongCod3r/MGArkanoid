@@ -18,14 +18,14 @@ namespace Arkanoid.Scenes
         public Vector2 position;
 
 
-        public StartScene(E2D engine) : base(engine)
+        public StartScene()
         {
             
         }
 
         public override void Initialize()
         {
-            var paddle = new Paddle(480, Engine.GraphicsDevice.Viewport.Height - 100);
+            var paddle = new Paddle(480, Game.SCREEN_HEIGHT - 55);
             AddEntity(paddle);
             AddEntity(new Ball(300, 300, paddle));
             position = Vector2.Zero;
@@ -33,7 +33,7 @@ namespace Arkanoid.Scenes
             base.Initialize();
         }
 
-        protected override void LoadContent()
+        public override void LoadContent()
         {
             backgrounTexture = Content.Load<Texture2D>("Sprites/background2");
 
@@ -42,7 +42,6 @@ namespace Arkanoid.Scenes
 
         public override void Update(GameTime gameTime)
         {
-            
             if (Keyboard.GetState().IsKeyDown(Keys.Left))
                 position.X -= 5;
 
@@ -54,13 +53,13 @@ namespace Arkanoid.Scenes
 
         public override void Draw(GameTime gameTime)
         {
-            spriteBatch.Begin();
+            SB.Begin();
             //-------------------------------------
-            spriteBatch.Draw(backgrounTexture, new Rectangle(0, 0, Game.GraphicsDevice.Viewport.Width, Game.GraphicsDevice.Viewport.Height), Color.White);
+            SB.Draw(backgrounTexture, new Rectangle(0, 0, Game.SCREEN_WIDTH, Game.SCREEN_HEIGHT), Color.White);
 
 
             //-------------------------------------
-            spriteBatch.End();
+            SB.End();
 
             base.Draw(gameTime);
         }

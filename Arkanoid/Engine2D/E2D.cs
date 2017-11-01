@@ -20,17 +20,21 @@ namespace Engine2D
         public GraphicsDeviceManager graphicsDevice;
         SpriteBatch spriteBatch;
         public SceneManager SceneManager;
-        public Game game;
+        public int SCREEN_WIDTH;
+        public int SCREEN_HEIGHT;
 
-        public E2D(String name, int with, int height, bool fullScreen = false)
+        public E2D(String name, int width, int height, bool fullScreen = false)
         {
+            SCREEN_WIDTH = width;
+            SCREEN_HEIGHT = height;
+
             graphicsDevice = new GraphicsDeviceManager(this)
             {
-                PreferredBackBufferWidth = with,
+                PreferredBackBufferWidth = width,
                 PreferredBackBufferHeight = height,
                 IsFullScreen = fullScreen
             };
-
+            Window.Title = name;
             Content.RootDirectory = "Content";
 
             SceneManager = new SceneManager(this);
@@ -102,36 +106,3 @@ namespace Engine2D
 }
 
 
-
-
-
-//namespace Engine2D
-//{
-//    /// <summary>
-//    /// This is the main type for your game.
-//    /// </summary>
-//    public class E2D
-//    {
-//        public Game game;
-//        public GraphicsDeviceManager graphicsDevice;
-//        public SceneManager SceneManager;
-
-//        public E2D(String name, int with, int height, bool fullScreen = false)
-//        {
-//            game = new Game();
-//            game.Content.RootDirectory = "Content";
-//            graphicsDevice = new GraphicsDeviceManager(game);
-//            graphicsDevice.PreferredBackBufferWidth = with;
-//            graphicsDevice.PreferredBackBufferHeight = height;
-//            graphicsDevice.IsFullScreen = fullScreen;
-//            graphicsDevice.ApplyChanges();
-//            SceneManager = new SceneManager(this);
-//            game.Components.Add(SceneManager);
-//        }
-
-//        public void Run()
-//        {
-//            game.Run();
-//        }
-//    }
-//}
