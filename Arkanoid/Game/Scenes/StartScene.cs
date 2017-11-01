@@ -52,6 +52,7 @@ namespace Arkanoid.Scenes
             //-------------------------------------
             SB.Draw(backgrounTexture, new Rectangle(0, 0, Game.SCREEN_WIDTH, Game.SCREEN_HEIGHT), Color.White);
 
+            Primitives2D.PutPixel(SB, new Vector2(300, 300), Color.Red);
 
             //-------------------------------------
             SB.End();

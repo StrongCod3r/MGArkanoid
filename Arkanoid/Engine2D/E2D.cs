@@ -70,8 +70,8 @@ namespace Engine2D
             Window.Position = new Point((GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width / 2) - (graphicsDevice.PreferredBackBufferWidth / 2),
                             (GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height / 2) - (graphicsDevice.PreferredBackBufferHeight / 2));
 
-            graphicsDevice.SynchronizeWithVerticalRetrace = false;
-            IsFixedTimeStep = false;
+            //graphicsDevice.SynchronizeWithVerticalRetrace = false;
+            //IsFixedTimeStep = false;
 
             ////FrameRate is 30fps
             //TargetElapsedTime = TimeSpan.FromTicks(333333);
@@ -88,11 +88,12 @@ namespace Engine2D
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+#if DEBUG
             debugFont = Content.Load<SpriteFont>("Font/debugFont");
 
             var fpsCounter = new FpsCounter(this, debugFont, new Vector2( 5, 5));
             Components.Add(fpsCounter);
+#endif
         }
 
         /// <summary>
