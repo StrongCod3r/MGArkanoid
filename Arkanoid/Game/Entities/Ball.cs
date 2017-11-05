@@ -19,7 +19,7 @@ namespace Arkanoid.Entities
         private bool isPaddleCollide;
         private bool caught;
         private float radius;
-        private Vector2 direction;
+        public Vector2 direction;
         private float acceleration = 5;
         private float speed = 600;
 

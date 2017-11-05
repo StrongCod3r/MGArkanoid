@@ -24,7 +24,11 @@ namespace Arkanoid
 
         public static readonly String[] paddle =
         {
-            "Sprites/paddle_tech",
+            "Sprites/paddle_tech_1",
+            "Sprites/paddle_tech_2",
+            "Sprites/paddle_tech_3",
+            "Sprites/paddle_tech_4",
+            "Sprites/paddle_tech_5",
             "Sprites/paddle_blue",
             "Sprites/paddle_red"
         };

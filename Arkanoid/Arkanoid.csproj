@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -42,6 +43,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Engine2D\FpsCounter.cs" />
+    <Compile Include="Engine2D\SpriteAnimation.cs" />
     <Compile Include="Game\BrickFactory.cs" />
     <Compile Include="Game\Entities\CharacterBase.cs" />
     <Compile Include="Engine2D\E2D.cs" />
@@ -55,6 +57,7 @@
     <Compile Include="Game\Scenes\IntroScene.cs" />
     <Compile Include="Game\Scenes\StartScene.cs" />
     <Compile Include="Engine2D\Primitives2D.cs" />
+    <Compile Include="Game\Scenes\TestScene.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
