@@ -27,7 +27,7 @@ namespace Arkanoid.Scenes
 
         public override void Initialize()
         {
-            var paddle = new Paddle(480, Game.SCREEN_HEIGHT - 55);
+            var paddle = new Paddle(480, Game.SCREEN_HEIGHT - 80);
             var ball = new Ball(300, 300, paddle);
             paddle.AppendBall(ball);
 

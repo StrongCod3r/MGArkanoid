@@ -32,12 +32,6 @@ namespace Engine2D
 
         Animation currentAnimation;
 
-        public int CurrentFrame
-        {
-            get { return currentFrame; }
-            set { currentFrame = (int)MathHelper.Clamp(value, 0, iFrameCount - 1); }
-        }
-
         public SpriteAnimation()
         {
             animations = new Dictionary<string, Animation>();
@@ -57,13 +51,7 @@ namespace Engine2D
             anim.speed = (float)1 / framesPerSec;
             anim.length = textures.Length;
             anim.index = 0;
-
-            anim.textures = new Texture2D[textures.Length];
-            
-            for (int i = 0; i < textures.Length; i++)
-            {
-                anim.textures[i] = textures[i];
-            }
+            anim.textures = textures;
 
             animations.Add(name, anim);
             //currentAnimation = anim;

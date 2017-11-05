@@ -57,6 +57,7 @@ namespace Engine2D
             SB = new SpriteBatch(Engine.GraphicsDevice);
 
 
+
             base.LoadContent();
         }
 
@@ -81,19 +82,20 @@ namespace Engine2D
 
         public override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
             if (currentScene != null)
             {
                 if (!currentScene.isLoaded)
                     currentScene.Initialize();
-
-                SB.Begin();
-                //-------------------------------------
-                currentScene.Draw(gameTime);
-                //-------------------------------------
-                SB.End();
             }
+
+            GraphicsDevice.Clear(Color.CornflowerBlue);
+
+            SB.Begin();
+            //-------------------------------------
+            currentScene.Draw(gameTime);
+            //-------------------------------------
+            SB.End();
+
             base.Draw(gameTime);
         }
     }

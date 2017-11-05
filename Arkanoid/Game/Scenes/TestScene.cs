@@ -23,19 +23,18 @@ namespace Arkanoid.Scenes
 
         public TestScene()
         {
-            paddleSprite = new SpriteAnimation();
+            
         }
 
         public override void Initialize()
         {
-            
+            paddleSprite = new SpriteAnimation();
             base.Initialize();
 
         }
 
         public override void LoadContent()
         {
-            
             Texture2D[] paddleTextures =
             {
                 Content.Load<Texture2D>(Assets.paddle[0]),

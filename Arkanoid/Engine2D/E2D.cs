@@ -20,14 +20,13 @@ namespace Engine2D
         private SpriteBatch spriteBatch;
         public SceneManager SceneManager;
         private Point screen;
-        public int SCREEN_WIDTH
-        {
-            get { return screen.X; }
-        }
-        public int SCREEN_HEIGHT
-        {
-            get { return screen.Y; }
-        }
+        private bool debug = false;
+        float timeCount = 0f;
+
+        public int SCREEN_WIDTH{get { return screen.X; }}
+        public int SCREEN_HEIGHT{ get { return screen.Y; } }
+        public bool Debug { get { return debug; } set { debug = value; } }
+
 
         public E2D(String name, int width, int height, bool fullScreen = false)
         {
@@ -113,6 +112,20 @@ namespace Engine2D
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+
+
+            // ModeDebug
+            if (Keyboard.GetState().IsKeyDown(Keys.F12) && timeCount > 0.5)
+            {
+                Debug = !Debug;
+                timeCount = 0;
+            }
+            else if (timeCount <= 0.5f)
+            {
+                timeCount += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
+                
+
 
             // TODO: Add your update logic here
 

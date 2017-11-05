@@ -16,7 +16,7 @@ namespace Arkanoid.Entities
 {
     public class CharacterBase : Entity
     {
-        public Vector2 position;
-        public Vector2 size;
+        public Vector2 position = Vector2.Zero;
+        public Vector2 size = new Vector2(40, 40);
     }
 }

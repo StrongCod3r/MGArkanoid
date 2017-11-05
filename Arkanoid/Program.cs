@@ -17,7 +17,7 @@ namespace Arkanoid
             using (var game = new E2D("Arkanoid", 1080, 700, false))
             {
 #if DEBUG
-                game.SceneManager.LoadScene(new TestScene(), true);
+                game.SceneManager.LoadScene(new StartScene(), true);
 #else
                 game.SceneManager.LoadScene(new IntroScene(), true);
 #endif
