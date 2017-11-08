@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Engine2D\FpsCounter.cs" />
     <Compile Include="Engine2D\SpriteAnimation.cs" />
+    <Compile Include="Engine2D\VectorizedColision.cs" />
     <Compile Include="Game\BrickFactory.cs" />
     <Compile Include="Game\Entities\CharacterBase.cs" />
     <Compile Include="Engine2D\E2D.cs" />
