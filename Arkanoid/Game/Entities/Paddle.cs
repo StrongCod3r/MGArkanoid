@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Engine2D;
+using Engine2D.Geometry;
 using Arkanoid.Entities;
 
 

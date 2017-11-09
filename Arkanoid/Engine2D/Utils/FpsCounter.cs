@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-namespace Engine2D
+namespace Engine2D.Utils
 {
     /// <summary>
     /// A game component that counts FPS and UPS, also gives other useful performance information.

@@ -42,7 +42,10 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Engine2D\FpsCounter.cs" />
+    <Compile Include="Engine2D\Components\Component.cs" />
+    <Compile Include="Engine2D\Components\RequiriedComponent.cs" />
+    <Compile Include="Engine2D\Managers\EntityManager.cs" />
+    <Compile Include="Engine2D\Utils\FpsCounter.cs" />
     <Compile Include="Engine2D\SpriteAnimation.cs" />
     <Compile Include="Engine2D\VectorizedColision.cs" />
     <Compile Include="Game\BrickFactory.cs" />
@@ -50,14 +53,14 @@
     <Compile Include="Engine2D\E2D.cs" />
     <Compile Include="Engine2D\Entity.cs" />
     <Compile Include="Engine2D\Scene.cs" />
-    <Compile Include="Engine2D\SceneManager.cs" />
+    <Compile Include="Engine2D\Managers\SceneManager.cs" />
     <Compile Include="Game\Entities\Ball.cs" />
     <Compile Include="Game\Entities\Brick.cs" />
     <Compile Include="Game\Entities\Paddle.cs" />
     <Compile Include="Game\Assets.cs" />
     <Compile Include="Game\Scenes\IntroScene.cs" />
     <Compile Include="Game\Scenes\StartScene.cs" />
-    <Compile Include="Engine2D\Primitives2D.cs" />
+    <Compile Include="Engine2D\Geometry\Primitives2D.cs" />
     <Compile Include="Game\Scenes\TestScene.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

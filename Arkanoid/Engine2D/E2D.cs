@@ -7,6 +7,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
+using Engine2D.Managers;
+using Engine2D.Utils;
 
 
 namespace Engine2D
@@ -87,7 +89,7 @@ namespace Engine2D
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 #if DEBUG
-            var debugFont = Content.Load<SpriteFont>("Font/debugFont");
+            var debugFont = Content.Load<SpriteFont>("Fonts/debugFont");
 
             var fpsCounter = new FpsCounter(this, debugFont, new Vector2( 5, 5));
             Components.Add(fpsCounter);

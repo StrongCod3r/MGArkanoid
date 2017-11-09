@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 
-namespace Engine2D
+namespace Engine2D.Managers
 {
     public class SceneManager : DrawableGameComponent
     {

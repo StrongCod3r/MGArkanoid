@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Engine2D
+namespace Engine2D.Geometry
 {
     /// <summary>
     /// </summary>
