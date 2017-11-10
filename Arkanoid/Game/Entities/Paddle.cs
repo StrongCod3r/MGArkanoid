@@ -33,7 +33,6 @@ namespace Arkanoid.Entities
 
         public override void Initialize()
         {
-            Game.Debug = true;
         }
 
         public override void LoadContent()
@@ -65,14 +64,15 @@ namespace Arkanoid.Entities
 
         public override void Draw(GameTime gameTime)
         {
-            SB.Draw(paddleSprite, new Rectangle((int)position.X, (int)position.Y, (int)size.X, (int)size.Y), Color.White);
+            SB.DrawSprite(paddleSprite, new Rectangle((int)position.X, (int)position.Y, (int)size.X, (int)size.Y), Color.White);
 
-            if (Game.Debug)
-            {
-                SB.DrawRectangle(new Rectangle(100, 500, 80, 40), Color.Red, 1);
-                SB.DrawCircle(new Vector2(100, 520), 20, 16, Color.Red);
-                SB.DrawCircle(new Vector2(180, 520), 20, 16, Color.Red);
-            }
+            //if (Game.Debug)
+            //{
+            //    SB.DrawRectangle(new Rectangle(100, 500, 80, 40), Color.Red, 1);
+            //    SB.DrawCircle(new Vector2(100, 520), 20, 16, Color.Red);
+            //    SB.DrawCircle(new Vector2(180, 520), 20, 16, Color.Red);
+                
+            //}
         }
 
 

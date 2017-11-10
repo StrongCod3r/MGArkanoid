@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Engine2D;
 
 namespace Engine2D.Geometry
 {
@@ -10,12 +11,30 @@ namespace Engine2D.Geometry
     public static class Primitives2D
     {
 
+        private static E2D game;
+
+        public static E2D GameEngine
+        {
+            get
+            {
+                return game;
+            }
+            set
+            {
+                game = value;
+            }
+        }
+
 
         #region Private Members
 
         private static readonly Dictionary<String, List<Vector2>> circleCache = new Dictionary<string, List<Vector2>>();
         //private static readonly Dictionary<String, List<Vector2>> arcCache = new Dictionary<string, List<Vector2>>();
         private static Texture2D pixel;
+
+        public static E2D Game { get => Game2; set => Game2 = value; }
+        public static E2D Game1 { get => Game2; set => Game2 = value; }
+        public static E2D Game2 { get => game; set => game = value; }
 
         #endregion
 
@@ -535,5 +554,13 @@ namespace Engine2D.Geometry
         #endregion
 
 
+        public static void DrawSprite(this SpriteBatch spriteBatch, Texture2D texture, Rectangle destinationRectangle, Color color)
+        {
+            spriteBatch.Draw(texture, destinationRectangle, color);
+            
+            if (game.Debug)
+                DrawRectangle(spriteBatch, destinationRectangle, Color.Blue, 2);
+
+        }
     }
 }

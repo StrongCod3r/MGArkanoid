@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Media;
 using Engine2D;
+using Engine2D.Geometry;
 using Arkanoid.Entities;
 
 namespace Arkanoid.Entities
@@ -69,7 +70,7 @@ namespace Arkanoid.Entities
         public override void Draw(GameTime gameTime)
         {
             if (!ballTexture.Equals(null))
-                SB.Draw(ballTexture, new Rectangle((int)position.X, (int)position.Y, (int)size.X, (int)size.Y), Color.White);
+                SB.DrawSprite(ballTexture, new Rectangle((int)position.X, (int)position.Y, (int)size.X, (int)size.Y), Color.White);
 
         }
 

@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Engine2D;
+using Engine2D.Geometry;
 using Arkanoid;
 using Arkanoid.Entities;
 
@@ -57,7 +58,7 @@ namespace Arkanoid.Scenes
         {
             SB.Begin();
             //-------------------------------------
-            SB.Draw(backgrounTexture, new Rectangle(0, 0, Game.SCREEN_WIDTH, Game.SCREEN_HEIGHT), Color.White);
+            SB.DrawSprite(backgrounTexture, new Rectangle(0, 0, Game.SCREEN_WIDTH, Game.SCREEN_HEIGHT), Color.White);
 
             //-------------------------------------
             SB.End();

@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Engine2D.Managers;
+using Engine2D.Geometry;
 using Engine2D.Utils;
 
 
@@ -42,6 +43,8 @@ namespace Engine2D
             };
             Window.Title = name;
             Content.RootDirectory = "Content";
+
+            Primitives2D.GameEngine = this;
 
             SceneManager = new SceneManager(this);
             Components.Add(SceneManager);
@@ -117,12 +120,12 @@ namespace Engine2D
 
 
             // ModeDebug
-            if (Keyboard.GetState().IsKeyDown(Keys.F12) && timeCount > 0.5)
+            if (Keyboard.GetState().IsKeyDown(Keys.F12) && timeCount > 0.3)
             {
                 Debug = !Debug;
                 timeCount = 0;
             }
-            else if (timeCount <= 0.5f)
+            else if (timeCount <= 0.3f)
             {
                 timeCount += (float)gameTime.ElapsedGameTime.TotalSeconds;
             }

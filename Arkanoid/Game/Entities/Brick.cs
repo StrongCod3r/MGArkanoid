@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Engine2D;
+using Engine2D.Geometry;
 using Arkanoid.Entities;
 
 namespace Arkanoid.Entities
@@ -41,7 +42,7 @@ namespace Arkanoid.Entities
 
         public override void Draw(GameTime gameTime)
         {
-            SB.Draw(brickTexture, new Rectangle((int)position.X, (int)position.Y, (int)size.X, (int)size.Y), Color.White);
+            SB.DrawSprite(brickTexture, new Rectangle((int)position.X, (int)position.Y, (int)size.X, (int)size.Y), Color.White);
         }
     }
 }

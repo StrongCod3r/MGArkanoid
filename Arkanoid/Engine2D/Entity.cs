@@ -12,8 +12,11 @@ namespace Engine2D
 {
     public abstract class Entity
     {
-        public E2D Game;
-		public ContentManager Content { get { return Game.Content; } }
+        private E2D game;
+        public ContentManager Content { get { return Game.Content; } }
+
+        public E2D Game { get => game; internal set => game = value; }
+
         public SpriteBatch SB;
         public string name;
         public bool visible;

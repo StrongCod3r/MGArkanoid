@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Engine2D.Components
 {
-
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
     public class RequiredComponent : Attribute
     {
