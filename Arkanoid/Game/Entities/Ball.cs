@@ -9,12 +9,13 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Media;
 using Engine2D;
+using Engine2D.Colliders;
 using Engine2D.Geometry;
 using Arkanoid.Entities;
 
 namespace Arkanoid.Entities
 {
-    class Ball : CharacterBase
+    class Ball : Entity
     {
         Texture2D ballTexture;
         private bool isPaddleCollide;
@@ -22,7 +23,7 @@ namespace Arkanoid.Entities
         private float radius;
         public Vector2 direction;
         private float acceleration = 5;
-        private float speed = 600;
+        private float speed = 100;
 
         Paddle paddle;
 
@@ -38,7 +39,8 @@ namespace Arkanoid.Entities
 
         public override void Initialize()
         {
-
+            this.name = "Ball";
+            AddCollider(new RectCollider());
         }
 
         public override void LoadContent()
@@ -55,7 +57,7 @@ namespace Arkanoid.Entities
 
                 if (IsPaddleCollide())
                 {
-                    direction.Y *= -1;
+                    //direction.Y *= -1;
                 }
                 else
                 {
@@ -67,7 +69,7 @@ namespace Arkanoid.Entities
 
         }
 
-        public override void Draw(GameTime gameTime)
+        public override void Draw(GameTime gameTime, SpriteBatch SB)
         {
             if (!ballTexture.Equals(null))
                 SB.DrawSprite(ballTexture, new Rectangle((int)position.X, (int)position.Y, (int)size.X, (int)size.Y), Color.White);
@@ -145,6 +147,12 @@ namespace Arkanoid.Entities
         {
             position.X = x;
             position.Y = y;
+        }
+
+        public override void OnCollisionEnter(Collider other)
+        {
+            if (other.Owner.tag.Equals("Brick"))
+                Game.SetTitle("Colisiona con un ladrillo");
         }
 
         #endregion 

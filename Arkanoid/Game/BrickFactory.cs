@@ -7,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Engine2D;
 using Microsoft.Xna.Framework;
-using Engine2D;
 using Arkanoid.Entities;
 
 
@@ -46,7 +45,7 @@ namespace Arkanoid.Entities
                     {
                         brick = new Brick(offset.X, offset.X, UInt32.Parse(t));
                         brick.position = pos;
-                        scene.AddEntity(brick);
+                        scene.EntityManager.Add(brick);
                     }
 
                     pos.X += (int)brick.size.X;

@@ -9,11 +9,12 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Engine2D;
 using Engine2D.Geometry;
+using Engine2D.Colliders;
 using Arkanoid.Entities;
 
 namespace Arkanoid.Entities
 {
-    class Brick : CharacterBase
+    class Brick : Entity
     {
         Texture2D brickTexture;
         UInt32 type;
@@ -27,7 +28,9 @@ namespace Arkanoid.Entities
 
         public override void Initialize()
         {
-            
+            this.tag = "Brick";
+
+            AddCollider(new RectCollider());
         }
 
         public override void LoadContent()
@@ -40,7 +43,7 @@ namespace Arkanoid.Entities
 
         }
 
-        public override void Draw(GameTime gameTime)
+        public override void Draw(GameTime gameTime, SpriteBatch SB)
         {
             SB.DrawSprite(brickTexture, new Rectangle((int)position.X, (int)position.Y, (int)size.X, (int)size.Y), Color.White);
         }

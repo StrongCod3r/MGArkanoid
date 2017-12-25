@@ -7,64 +7,51 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
+using Engine2D.Managers;
+
 
 namespace Engine2D
 {
     public class Scene
     {
         private String name;
-        public string Name { get { return name; } set { name = value; } }
+        public bool Loaded = false;
+        public bool Pause = false;
         public E2D Game;
-		public ContentManager Content { get { return Game.Content; } }
+        public EntityManager EntityManager;
+        private ColliderManager ColliderManager;
 
-        protected List<Entity> entities;
-        public List<Entity> Entities
-        {
-            get { return this.entities; }
-        }
-
-        public bool isLoaded = false;
+        public string Name { get { return name; } set { name = value; } }
+        public ContentManager Content { get { return Game.Content; } }
 
         protected SpriteBatch SB;
 
+        public Scene(string name) : this()
+        {
+            this.name = name;
+        }
         public Scene()
         {
-            entities = new List<Entity>();
+            EntityManager = new EntityManager(this);
+            ColliderManager = new ColliderManager(this);
         }
 
-        public void AddEntity(Entity entity)
-        {
-            if (entity != null)
-            {
-                entity.Game = Game;
-                entities.Add(entity);
-            }  
-        }
 
         public virtual void Initialize()
         {
             this.LoadContent();
-
-            foreach (Entity e in entities)
-            {
-                e.Game = this.Game;
-                e.SB = this.SB;
-                e.Initialize();
-                e.LoadContent();
-            }
-
-            isLoaded = true;
-  
+            Loaded = true;
         }
 
         public virtual void LoadContent()
         {
             SB = new SpriteBatch(Game.GraphicsDevice);
 
-            foreach (Entity e in entities)
-            {
-                e.LoadContent();
-            }
+            if (!EntityManager.Initialized)
+                EntityManager.Initialize();
+
+            if (!ColliderManager.Initialized)
+                ColliderManager.Initialize();
         }
 
         public virtual void UnloadContent() { }
@@ -72,20 +59,17 @@ namespace Engine2D
 
         public virtual void Update(GameTime gameTime)
         {
-            foreach(Entity e in entities)
-            {
-                e.Update(gameTime);
-            }
+            EntityManager.Update(gameTime);
+            ColliderManager.Update(gameTime);
         }
 
         public virtual void Draw(GameTime gameTime)
         {
             SB.Begin();
             //-------------------------------------
-            foreach (Entity e in entities)
-            {
-                e.Draw(gameTime);
-            }
+            EntityManager.Draw(gameTime, SB);
+            if (Game.Debug)
+                ColliderManager.Draw(gameTime, SB);
             //-------------------------------------
             SB.End();
         }

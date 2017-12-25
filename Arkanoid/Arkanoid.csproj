@@ -42,14 +42,17 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Engine2D\Components\Component.cs" />
-    <Compile Include="Engine2D\Components\RequiriedComponent.cs" />
+    <Compile Include="Engine2D\Colliders\CircleCollider.cs" />
+    <Compile Include="Engine2D\Colliders\Collider.cs" />
+    <Compile Include="Engine2D\Colliders\RectCollider.cs" />
+    <Compile Include="Engine2D\Colliders\TypeCollider.cs" />
+    <Compile Include="Engine2D\Managers\ColliderManager.cs" />
     <Compile Include="Engine2D\Managers\EntityManager.cs" />
+    <Compile Include="Engine2D\Managers\Manager.cs" />
     <Compile Include="Engine2D\Utils\FpsCounter.cs" />
     <Compile Include="Engine2D\SpriteAnimation.cs" />
     <Compile Include="Engine2D\VectorizedColision.cs" />
     <Compile Include="Game\BrickFactory.cs" />
-    <Compile Include="Game\Entities\CharacterBase.cs" />
     <Compile Include="Engine2D\E2D.cs" />
     <Compile Include="Engine2D\Entity.cs" />
     <Compile Include="Engine2D\Scene.cs" />

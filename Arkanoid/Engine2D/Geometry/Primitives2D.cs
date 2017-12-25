@@ -559,7 +559,7 @@ namespace Engine2D.Geometry
             spriteBatch.Draw(texture, destinationRectangle, color);
             
             if (game.Debug)
-                DrawRectangle(spriteBatch, destinationRectangle, Color.Blue, 2);
+                DrawRectangle(spriteBatch, destinationRectangle, Color.Blue, 1);
 
         }
     }

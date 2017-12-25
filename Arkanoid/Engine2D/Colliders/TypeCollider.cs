@@ -4,9 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Engine2D.Components
+namespace Engine2D.Colliders
 {
-    class Component
-    {
-    }
+    public enum TypeCollider { Rectangle, Circle}
 }

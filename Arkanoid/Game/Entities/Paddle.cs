@@ -9,12 +9,13 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Engine2D;
 using Engine2D.Geometry;
+using Engine2D.Colliders;
 using Arkanoid.Entities;
 
 
 namespace Arkanoid.Entities
 {
-    class Paddle : CharacterBase
+    class Paddle : Entity
     {
         Texture2D paddleSprite;
         float speed;
@@ -33,12 +34,15 @@ namespace Arkanoid.Entities
 
         public override void Initialize()
         {
+            this.tag = "Player";
+            this.name = "Paddle";
+
+            AddCollider(new RectCollider() { X = 50, Y = 40, Widht = 95, Height = 25 });
         }
 
         public override void LoadContent()
         {
             paddleSprite = Content.Load<Texture2D>(Assets.paddle[0]);
-            
         }
 
         public override void Update(GameTime gameTime)
@@ -62,17 +66,9 @@ namespace Arkanoid.Entities
             lastKeyState = keyState;
         }
 
-        public override void Draw(GameTime gameTime)
+        public override void Draw(GameTime gameTime, SpriteBatch SB)
         {
             SB.DrawSprite(paddleSprite, new Rectangle((int)position.X, (int)position.Y, (int)size.X, (int)size.Y), Color.White);
-
-            //if (Game.Debug)
-            //{
-            //    SB.DrawRectangle(new Rectangle(100, 500, 80, 40), Color.Red, 1);
-            //    SB.DrawCircle(new Vector2(100, 520), 20, 16, Color.Red);
-            //    SB.DrawCircle(new Vector2(180, 520), 20, 16, Color.Red);
-                
-            //}
         }
 
 
@@ -89,6 +85,12 @@ namespace Arkanoid.Entities
             currentBalls[0].direction = new Vector2(1, -1);
             currentBalls[0].position.X = this.position.X + this.size.X /2 - currentBalls[0].size.X;
             currentBalls[0].position.Y = this.position.Y - 50;
+        }
+
+        public override void OnCollisionEnter(Collider other)
+        {
+            if (other.Owner.name.Equals("Ball"))
+                Game.SetTitle("Colisiona con la bola!!!!");
         }
     }
 }

@@ -32,8 +32,8 @@ namespace Arkanoid.Scenes
             var ball = new Ball(300, 300, paddle);
             paddle.AppendBall(ball);
 
-            AddEntity(paddle);
-            AddEntity(ball);
+            EntityManager.Add(paddle);
+            EntityManager.Add(ball);
 
             var brickFactory = new BrickFactory(this, Assets.Level[0], new Point(130, 50));
             brickFactory.LoadLevel();

@@ -47,7 +47,7 @@ namespace Engine2D.Managers
 
         public override void Initialize()
         {
-
+            currentScene.Initialize();
             base.Initialize();
         }
 
@@ -55,8 +55,6 @@ namespace Engine2D.Managers
         protected override void LoadContent()
         {
             SB = new SpriteBatch(Engine.GraphicsDevice);
-
-
 
             base.LoadContent();
         }
@@ -84,7 +82,7 @@ namespace Engine2D.Managers
         {
             if (currentScene != null)
             {
-                if (!currentScene.isLoaded)
+                if (!currentScene.Loaded)
                     currentScene.Initialize();
             }
 
