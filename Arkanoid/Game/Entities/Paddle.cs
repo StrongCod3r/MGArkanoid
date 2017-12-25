@@ -26,6 +26,9 @@ namespace Arkanoid.Entities
 
         public Paddle(int x, int y)
         {
+            this.tag = "Player";
+            this.name = "Paddle";
+
             position.X = x;
             position.Y = y;
             size.X = 200;
@@ -34,10 +37,9 @@ namespace Arkanoid.Entities
 
         public override void Initialize()
         {
-            this.tag = "Player";
-            this.name = "Paddle";
-
-            AddCollider(new RectCollider() { X = 50, Y = 40, Widht = 95, Height = 25 });
+            AddCollider(new RectCollider() { X = 50, Y = 41, Widht = 95, Height = 24 });
+            AddCollider(new CircleCollider() { Radius = 12, X = -50, Y = 13 });
+            AddCollider(new CircleCollider() { Radius = 12, X = 50, Y = 13 });
         }
 
         public override void LoadContent()
@@ -85,12 +87,6 @@ namespace Arkanoid.Entities
             currentBalls[0].direction = new Vector2(1, -1);
             currentBalls[0].position.X = this.position.X + this.size.X /2 - currentBalls[0].size.X;
             currentBalls[0].position.Y = this.position.Y - 50;
-        }
-
-        public override void OnCollisionEnter(Collider other)
-        {
-            if (other.Owner.name.Equals("Ball"))
-                Game.SetTitle("Colisiona con la bola!!!!");
         }
     }
 }

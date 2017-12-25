@@ -18,12 +18,12 @@ namespace Arkanoid.Entities
     class Ball : Entity
     {
         Texture2D ballTexture;
-        private bool isPaddleCollide;
         private bool caught;
         private float radius;
         public Vector2 direction;
         private float acceleration = 5;
         private float speed = 100;
+        private bool isPaddleCollide;
 
         Paddle paddle;
 
@@ -40,7 +40,7 @@ namespace Arkanoid.Entities
         public override void Initialize()
         {
             this.name = "Ball";
-            AddCollider(new RectCollider());
+            AddCollider(new CircleCollider() { Radius = 50 });
         }
 
         public override void LoadContent()
@@ -55,16 +55,16 @@ namespace Arkanoid.Entities
             {
                 position += (direction * speed * (float)gameTime.ElapsedGameTime.TotalSeconds);
 
-                if (IsPaddleCollide())
+                if (isPaddleCollide)
                 {
-                    //direction.Y *= -1;
+                    direction.Y *= -1;
+                    isPaddleCollide = false;
                 }
                 else
                 {
                     if (IsCollideX()) direction.X *= -1;
                     if (IsCollideY()) direction.Y *= -1;
                 }
-                //notifyObserver();
             }
 
         }
@@ -91,26 +91,24 @@ namespace Arkanoid.Entities
 
         bool IsCollideX()
         {
-            if(this.position.X + 2 * this.radius >= Game.SCREEN_WIDTH ||
-               this.position.X <= 0)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        bool IsPaddleCollide()
-        {
-            if(position.Y + 2 * this.radius >= paddle.position.Y &&
-               this.position.Y + 2 * this.radius <=
-                   paddle.position.Y + paddle.size.Y &&
-               this.position.X + 2 * this.radius >= paddle.position.X &&
-               this.position.X + 2 * this.radius <=
-                   paddle.position.X + paddle.size.X)
+            if (this.position.X + 2 * this.radius >= Game.SCREEN_WIDTH || this.position.X <= 0)
                 return true;
 
             return false;
         }
+
+        //bool IsPaddleCollide()
+        //{
+        //    if(position.Y + 2 * this.radius >= paddle.position.Y &&
+        //       this.position.Y + 2 * this.radius <=
+        //           paddle.position.Y + paddle.size.Y &&
+        //       this.position.X + 2 * this.radius >= paddle.position.X &&
+        //       this.position.X + 2 * this.radius <=
+        //           paddle.position.X + paddle.size.X)
+        //        return true;
+
+        //    return false;
+        //}
 
         void reverseDirection()
         {
@@ -119,10 +117,9 @@ namespace Arkanoid.Entities
 
         bool IsCollideY()
         {
-            if(this.position.Y + 2 * this.radius >= Game.SCREEN_HEIGHT ||
-               this.position.Y <= 0) {
+            if (this.position.Y + 2 * this.radius >= Game.SCREEN_HEIGHT || this.position.Y <= 0)
                 return true;
-            }
+
             return false;
         }
 
@@ -151,8 +148,16 @@ namespace Arkanoid.Entities
 
         public override void OnCollisionEnter(Collider other)
         {
-            if (other.Owner.tag.Equals("Brick"))
-                Game.SetTitle("Colisiona con un ladrillo");
+            //if (other.Owner.tag.Equals("Brick"))
+            //    Game.SetTitle("Ball ->> Brick");
+
+            //if (other.Owner.tag.Equals("Player"))
+            //    Game.SetTitle("Ball ->> Paddle");
+
+            Game.SetTitle(other.Owner.tag);
+
+            isPaddleCollide |= other.Owner.name.Equals("Paddle");
+
         }
 
         #endregion 

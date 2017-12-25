@@ -21,6 +21,8 @@ namespace Arkanoid.Entities
 
         public Brick(int x, int y, UInt32 type)
         {
+            this.tag = "Brick";
+            this.name = "Brick";
             position = new Vector2(x, y);
             size = new Vector2(40, 20);
             this.type = type;
@@ -28,8 +30,6 @@ namespace Arkanoid.Entities
 
         public override void Initialize()
         {
-            this.tag = "Brick";
-
             AddCollider(new RectCollider());
         }
 

@@ -33,9 +33,9 @@ namespace Engine2D.Managers
             {
                 for (int j = i + 1; j < colliders.Count; j++)
                 {
-                    if (!ReferenceEquals(colliders[i].Owner, colliders[j].Owner))
+                    if (!ReferenceEquals(colliders[i].Owner, colliders[j].Owner) && colliders[i].enable && colliders[j].enable)
                     {
-                        if (CheckCollision(colliders[i], colliders[j]))
+                        if (IsColliding(colliders[i], colliders[j]))
                         {                                         
                             colliders[i].Owner.OnCollisionEnter(colliders[j]);
                             colliders[j].Owner.OnCollisionEnter(colliders[i]);
@@ -43,7 +43,6 @@ namespace Engine2D.Managers
                     }
                 }
             }
-
         }
 
         private void GetColliders()
@@ -59,17 +58,56 @@ namespace Engine2D.Managers
             }
         }
 
-        public bool CheckCollision(Collider obj1, Collider obj2)
+        #region METHODS COLLIDERS
+        public bool IsColliding(Collider obj1, Collider obj2)
         {
-            var a = (obj1 as RectCollider).Rect;
-            var b = (obj2 as RectCollider).Rect;
-
             if (obj1.Type == TypeCollider.Rectangle && obj2.Type == TypeCollider.Rectangle)
-            {
-                return (obj1 as RectCollider).Rect.Intersects((obj2 as RectCollider).Rect);
-            }
-            return false;
+                return CheckCollision(obj1 as RectCollider, obj2 as RectCollider);
+
+            else if (obj1.Type == TypeCollider.Rectangle && obj2.Type == TypeCollider.Circle)
+                return CheckCollision(obj2 as CircleCollider, obj1 as RectCollider);
+
+            else if (obj1.Type == TypeCollider.Circle && obj2.Type == TypeCollider.Circle)
+                return CheckCollision(obj1 as CircleCollider, obj2 as CircleCollider);
+            else
+                return CheckCollision(obj1 as CircleCollider, obj2 as RectCollider);
         }
+
+        public bool CheckCollision(RectCollider rect1, RectCollider rect2)
+        {
+            return rect1.Rect.Intersects(rect2.Rect);
+        }
+
+        public bool CheckCollision(CircleCollider circle, RectCollider rect)
+        {
+            var closestX = MathHelper.Clamp(circle.X, rect.X, rect.X + rect.Widht);
+            var closestY = MathHelper.Clamp(circle.Y, rect.Y, rect.Y + rect.Height);
+
+            // Calculate the distance between the circle's center and this closest point
+            var distanceX = circle.X - closestX;
+            var distanceY = circle.Y - closestY;
+
+            // If the distance is less than the circle's radius, an intersection occurs
+            var distanceSquared = (distanceX * distanceX) + (distanceY * distanceY);
+            return distanceSquared < (circle.Radius * circle.Radius);
+        }
+
+        public bool CheckCollision(CircleCollider circle1, CircleCollider circle2)
+        {
+            // Distance: (R1+ R2)^2 => (x2 – x1)^2 + (y2 – y1)^2
+
+            float dx = circle2.X - circle1.X;
+            float dy = circle2.Y - circle1.Y;
+
+            Int32 radioTotal = (Int32)(circle1.Radius + circle2.Radius);
+
+            if ((Math.Pow(dx, 2) + Math.Pow(dy, 2)) <= Math.Pow(radioTotal, 2))
+                return true;
+
+            return false;
+        } 
+        #endregion
+
 
         public override void Draw(GameTime gameTime, SpriteBatch SB)
         {

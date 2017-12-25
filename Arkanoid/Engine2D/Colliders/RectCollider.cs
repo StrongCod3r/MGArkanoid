@@ -17,19 +17,17 @@ namespace Engine2D.Colliders
         public int Y { get => (int)this.Owner.position.Y + y; set => y = value; }
         public int Widht { get => width; set => width = value; }
         public int Height { get => height; set => height = value; }
-        public bool initialized;
-        public bool Initialized { get => initialized; }
+
 
         public Rectangle Rect
         {
             get
             {
-                //rect.X = X;
-                //rect.Y = Y;
-                //rect.Width = Widht;
-                //rect.Height = Height;
-                //return rect;
-                return new Rectangle(X, Y, Widht, Height);
+                rect.X = X;
+                rect.Y = Y;
+                rect.Width = Widht;
+                rect.Height = Height;
+                return rect;
             }
         }
 

@@ -17,6 +17,9 @@ namespace Engine2D.Colliders
         protected int width, height;
         protected TypeCollider type;
         public TypeCollider Type { get => type;}
+        public bool enable = true;
+        protected bool initialized;
+        public bool Initialized { get => initialized; }
 
         public virtual void Initialize() { }
         public virtual void LoadContent() { }
