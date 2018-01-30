@@ -10,15 +10,16 @@ using Microsoft.Xna.Framework.Content;
 
 namespace Engine2D.Managers
 {
-    public class SceneManager : DrawableGameComponent
+    public class SceneManager
     {
-		public ContentManager Content { get { return Game.Content; } }
+		public ContentManager Content { get { return Engine.Content; } }
         private SpriteBatch SB;
         private List<Scene> scenes;
         private Scene currentScene;
         private E2D Engine;
 
-        public SceneManager(E2D engine) : base(engine)
+
+        public SceneManager(E2D engine)
         {
             Engine = engine;
             scenes = new List<Scene>();
@@ -45,40 +46,54 @@ namespace Engine2D.Managers
             return scenes.Remove(scene);
         }
 
-        public override void Initialize()
+        public void Initialize()
         {
-            currentScene.Initialize();
-            base.Initialize();
+            
+            //if (currentScene != null)
+            //{
+            //    if (!currentScene.Loaded)
+            //        currentScene.Initialize();
+
+            //    currentScene.Initialize();
+            //}
+            //base.Initialize();
         }
 
 
-        protected override void LoadContent()
+        public void LoadContent()
         {
             SB = new SpriteBatch(Engine.GraphicsDevice);
 
-            base.LoadContent();
+            //if (currentScene != null)
+            //    currentScene.LoadContent();
+
+            //base.LoadContent();
         }
 
-        protected override void UnloadContent()
+        protected void UnloadContent()
         {
             // TODO: Unload any non ContentManager content here
             currentScene.UnloadContent();
         }
 
-        public override void Update(GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Game.Exit();
+                Engine.Exit();
+
 
             if (currentScene != null)
             {
+                if (!currentScene.Loaded)
+                    currentScene.Initialize();
+
                 currentScene.Update(gameTime);
             }
 
-            base.Update(gameTime);
+            //base.Update(gameTime);
         }
 
-        public override void Draw(GameTime gameTime)
+        public void Draw(GameTime gameTime)
         {
             if (currentScene != null)
             {
@@ -86,15 +101,17 @@ namespace Engine2D.Managers
                     currentScene.Initialize();
             }
 
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
             SB.Begin();
             //-------------------------------------
-            currentScene.Draw(gameTime);
+            if (currentScene != null)
+            {
+                currentScene.Draw(gameTime);
+            }
+                
             //-------------------------------------
             SB.End();
 
-            base.Draw(gameTime);
+
         }
     }
 }

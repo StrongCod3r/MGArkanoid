@@ -47,5 +47,11 @@ namespace Arkanoid.Entities
         {
             SB.DrawSprite(brickTexture, new Rectangle((int)position.X, (int)position.Y, (int)size.X, (int)size.Y), Color.White);
         }
+
+        public override void OnCollisionEnter(Collider other)
+        {
+            if (other.Owner.name == "Ball")
+                destroy = true;
+        }
     }
 }

@@ -45,10 +45,26 @@ namespace Engine2D.Managers
 
         public override void Update(GameTime gameTime)
         {
-            foreach (Entity e in EntitiesList)
+
+            for (int i = 0; i < EntitiesList.Count; i++)
             {
-                e.Update(gameTime);
+                if (EntitiesList[i].destroy)
+                {
+                    EntitiesList.Remove(EntitiesList[i]);
+                    continue;
+                }
+                EntitiesList[i].Update(gameTime);
             }
+
+            //foreach (Entity e in EntitiesList)
+            //{
+            //    if (e.destroy)
+            //    {
+            //        entitiesList.Remove(e);
+            //        continue;
+            //    }
+            //    e.Update(gameTime);
+            //}
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch SB)

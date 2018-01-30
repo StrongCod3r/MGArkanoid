@@ -7,7 +7,7 @@ using Engine2D;
 using Engine2D.Colliders;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
+using System.Timers;
 
 namespace Engine2D.Managers
 {
@@ -15,6 +15,7 @@ namespace Engine2D.Managers
     {
         private Scene scene;
         private List<Collider> colliders;
+        double elapsedTime = 0f;
 
         public ColliderManager(Scene scene)
         {
@@ -27,22 +28,32 @@ namespace Engine2D.Managers
             this.initialized = true;
         }
 
+
+
         public override void Update(GameTime gameTime)
         {
-            for (int i = 0; i < colliders.Count; i++)
-            {
-                for (int j = i + 1; j < colliders.Count; j++)
+            //elapsedTime += gameTime.ElapsedGameTime.TotalMilliseconds;
+
+            //if (elapsedTime >= 10)
+            //{
+                elapsedTime = 0;
+                //=====
+                for (int i = 0; i < colliders.Count; i++)
                 {
-                    if (!ReferenceEquals(colliders[i].Owner, colliders[j].Owner) && colliders[i].enable && colliders[j].enable)
+                    for (int j = i + 1; j < colliders.Count; j++)
                     {
-                        if (IsColliding(colliders[i], colliders[j]))
-                        {                                         
-                            colliders[i].Owner.OnCollisionEnter(colliders[j]);
-                            colliders[j].Owner.OnCollisionEnter(colliders[i]);
+                        if (!ReferenceEquals(colliders[i].Owner, colliders[j].Owner) && colliders[i].enable && colliders[j].enable)
+                        {
+                            if (IsColliding(colliders[i], colliders[j]))
+                            {
+                                colliders[i].Owner.OnCollisionEnter(colliders[j]);
+                                colliders[j].Owner.OnCollisionEnter(colliders[i]);
+                            }
                         }
                     }
                 }
-            }
+            //}
+
         }
 
         private void GetColliders()

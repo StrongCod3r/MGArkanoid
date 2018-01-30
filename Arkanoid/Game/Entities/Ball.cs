@@ -22,7 +22,7 @@ namespace Arkanoid.Entities
         private float radius;
         public Vector2 direction;
         private float acceleration = 5;
-        private float speed = 100;
+        private float speed = 500;
         private bool isPaddleCollide;
 
         Paddle paddle;
@@ -40,7 +40,8 @@ namespace Arkanoid.Entities
         public override void Initialize()
         {
             this.name = "Ball";
-            AddCollider(new CircleCollider() { Radius = 50 });
+            AddCollider(new CircleCollider() { /*Radius = 50*/});
+            //AddCollider(new RectCollider());
         }
 
         public override void LoadContent()
@@ -129,12 +130,6 @@ namespace Arkanoid.Entities
             SetPos(pos.X, pos.Y);
         }
 
-
-        //public void notifyObserver();
-        //public void addObserver(CollisionObserverPtr observer);
-
-
-
         private void LoseBall()
         {
 
@@ -148,14 +143,6 @@ namespace Arkanoid.Entities
 
         public override void OnCollisionEnter(Collider other)
         {
-            //if (other.Owner.tag.Equals("Brick"))
-            //    Game.SetTitle("Ball ->> Brick");
-
-            //if (other.Owner.tag.Equals("Player"))
-            //    Game.SetTitle("Ball ->> Paddle");
-
-            Game.SetTitle(other.Owner.tag);
-
             isPaddleCollide |= other.Owner.name.Equals("Paddle");
 
         }

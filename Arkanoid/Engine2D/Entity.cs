@@ -22,6 +22,7 @@ namespace Engine2D
         private List<Collider> collidersList;
         public Vector2 position = Vector2.Zero;
         public Vector2 size = new Vector2(40, 40);
+        public bool destroy = false;
 
         #endregion
 
