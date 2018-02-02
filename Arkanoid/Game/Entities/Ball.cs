@@ -33,7 +33,7 @@ namespace Arkanoid.Entities
             position = new Vector2(x, y);
             size = new Vector2(20, 20);
             caught = false;
-            direction = new Vector2(1, 1);
+            direction = new Vector2(0.7071067812f, 0.7071067812f);
             radius = 5;  
         }
 
@@ -58,12 +58,33 @@ namespace Arkanoid.Entities
 
                 if (isPaddleCollide)
                 {
-                    direction.Y *= -1;
-                    
-                    //direction.X += <someEffectFromPaddleFriction>;
-                    //direction.X += <someEffectFromDiferenceOfPositionsBetweenBallAndPaddle>;
+    
+                    //decision maker
+                    //new list of CollidedRects
+                    int numberOfRectsWhereTheBallCouldBe = 3;//coz of yes for explanatory purpous (list.size in reallity)
+                    while (numberOfRectsWhereTheBallCouldBe > 1)
+                    {
+                        //rectNumber = FirstOfTheListOfCollides;
+                        position += (-direction * 5); //go five pixels back in time, eventually just 1 Rect will stay
+                        //new List of CollidedRects
+                        //numberOfRectsWhereTheBallCouldBe = list.size;
+                    }
+                    //at the end of this loop, we'll have the last touched rectangle and the ball in the surface of the paddle (or close enough), not inside
+                    //next, the direction of the ball is computed 
+
+                    //this calculate the reflected direction (with rectnumber as the cuotient to chose the corresponding normal) wrt this normal
+                    int rectNumber = 0;
+                    float inAngle,outAngle;
+                    inAngle = (float)Math.Acos(Vector2.Dot(-this.direction, paddle.simplifiedShape[rectNumber]));
+                    outAngle = (float)Math.Atan2(paddle.simplifiedShape[rectNumber].Y, paddle.simplifiedShape[rectNumber].X) - inAngle;
+                    this.direction.X = (float)Math.Cos(outAngle);
+                    this.direction.Y = (float)Math.Sin(outAngle);
+
+
 
                     isPaddleCollide = false;
+                    //after this process is done, now comes the best time to draw on the screen
+
                 }
                 else
                 {
