@@ -145,7 +145,7 @@ namespace Arkanoid.Entities
             position.Y = y;
         }
 
-        public override void OnCollisionEnter(Collider other)
+        public override void OnCollisionEnter(Collider local, Collider other)
         {
             isPaddleCollide |= other.Owner.name.Equals("Paddle");
         }

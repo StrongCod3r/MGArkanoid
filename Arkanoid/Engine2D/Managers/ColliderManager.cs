@@ -46,8 +46,8 @@ namespace Engine2D.Managers
                         {
                             if (IsColliding(colliders[i], colliders[j]))
                             {
-                                colliders[i].Owner.OnCollisionEnter(colliders[j]);
-                                colliders[j].Owner.OnCollisionEnter(colliders[i]);
+                                colliders[i].Owner.OnCollisionEnter(colliders[i], colliders[j]);
+                                colliders[j].Owner.OnCollisionEnter(colliders[j], colliders[i]);
                             }
                         }
                     }
