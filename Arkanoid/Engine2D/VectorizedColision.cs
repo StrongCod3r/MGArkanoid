@@ -12,38 +12,37 @@ namespace Engine2D
 {
     public class VectorCollision
     {
-        public Vector2[,] vectorMap;
+        public bool[,] collisionMap;
+        public Vector2 mapPosition;
 
-        public VectorCollision(Texture2D normalMap2D)
+        public VectorCollision(Texture2D sprite2D, Vector2 cornerPosition)
         {
-            //matrix with normal vectors
-            this.vectorMap = new Vector2[normalMap2D.Width, normalMap2D.Height];
+            this.mapPosition = cornerPosition;
+            //matrix with "things"
+            this.collisionMap = new bool[sprite2D.Width, sprite2D.Height];
 
             //array with each color of the render
-            Color[] colors1D = new Color[normalMap2D.Width * normalMap2D.Height];
-            normalMap2D.GetData(colors1D);
+            Color[] colors1D = new Color[sprite2D.Width * sprite2D.Height];
+            sprite2D.GetData(colors1D);
 
             int n = 0;
             Color currentColor;
-            for (int x = 0; x < normalMap2D.Width ;x++)
+            for (int x = 0; x < sprite2D.Width; x++)
             {
-                for(int y = 0; y < normalMap2D.Height ;y++)
+                for (int y = 0; y < sprite2D.Height; y++)
                 {
                     currentColor = colors1D[n];
 
-                    //no color -> no vector -> no colision
+                    //no color -> no colision
                     if (currentColor.A < 200)
                     {
-                        vectorMap[x, y] = new Vector2(0, 0);
+                        collisionMap[x, y] = false;
                     }
 
+                    //color -> thing -> collision
                     else
                     {
-                        vectorMap[x,y].X = currentColor.B - 127;
-                        vectorMap[x,y].Y = currentColor.G - 127;
-
-                        //normal vector are sexy for geometry
-                        vectorMap[x,y].Normalize();
+                        collisionMap[x, y] = true;
                     }
                     n++;
                 }
@@ -51,7 +50,5 @@ namespace Engine2D
             }
 
         }//end constructor
-
     }
-
 }

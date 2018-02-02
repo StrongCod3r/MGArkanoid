@@ -23,6 +23,9 @@ namespace Arkanoid.Entities
         private Random randomGen = new Random();
         private KeyboardState keyState;
         private KeyboardState lastKeyState;
+        private Vector2[] simplifiedShape;
+        float gain = 100.0f;
+        int offset = 25;
 
         public Paddle(int x, int y)
         {
@@ -30,16 +33,67 @@ namespace Arkanoid.Entities
             this.name = "Paddle";
 
             position.X = x;
-            position.Y = y;
-            size.X = 200;
-            size.Y = 80;
+            position.Y = y-300;
+            size.X = (int)4.0f*gain;
+            size.Y = (int)2.25f*gain;
+
+            //rough aproach for collisions
+            this.simplifiedShape = new Vector2[10];
+            this.simplifiedShape[0] = new Vector2(-1,0);
+            this.simplifiedShape[1] = new Vector2(-1,0.8f);
+            this.simplifiedShape[2] = new Vector2(-1,1);
+            this.simplifiedShape[3] = new Vector2(-0.7f,1);
+            this.simplifiedShape[4] = new Vector2(0,1);
+            this.simplifiedShape[5] = new Vector2(1,0.3f);
+            this.simplifiedShape[6] = new Vector2(0.3f,1);
+            this.simplifiedShape[7] = new Vector2(1,0.3f);
+            this.simplifiedShape[8] = new Vector2(1,1);
+            this.simplifiedShape[9] = new Vector2(0,1);
         }
 
         public override void Initialize()
         {
-            AddCollider(new RectCollider() { X = 50, Y = 41, Widht = 95, Height = 24 });
-            AddCollider(new CircleCollider() { Radius = 12, X = -50, Y = 13 });
-            AddCollider(new CircleCollider() { Radius = 12, X = 50, Y = 13 });
+            float gain = this.gain*1.5f;
+            int offset = (int)(gain/3.0f);
+            AddCollider(new RectCollider() { X = offset, Y = (int)(gain * 0.8556f), Widht = (int)(gain * 0.0256f), Height = 24 });
+            offset += (int)(gain * 0.0256f);
+            AddCollider(new RectCollider() { X = offset, Y = (int)(gain * 0.8300f), Widht = (int)(gain * 0.0656f), Height = 24 });
+            offset += (int)(gain * 0.0656f);
+            AddCollider(new RectCollider() { X = offset, Y = (int)(gain * 0.7706f), Widht = (int)(gain * 0.08737f), Height = 40 });
+            offset += (int)(gain * 0.08737f);
+            AddCollider(new RectCollider() { X = offset, Y = (int)(gain * 0.7156f), Widht = (int)(gain * 0.10510f), Height = 24 });
+            offset += (int)(gain * 0.10510f);
+            AddCollider(new RectCollider() { X = offset, Y = (int)(gain * 0.6856f), Widht = (int)(gain * 0.12592f), Height = 30 });
+            offset += (int)(gain * 0.12592f);
+            AddCollider(new RectCollider() { X = offset, Y = (int)(gain * 0.7156f), Widht = (int)(gain * 0.05325f), Height = 24 });
+            offset += (int)(gain * 0.05325f);
+            AddCollider(new RectCollider() { X = offset, Y = (int)(gain * 0.7556f), Widht = (int)(gain * 0.09708f), Height = 24 });
+            offset += (int)(gain * 0.09708f);
+            AddCollider(new RectCollider() { X = offset, Y = (int)(gain * 0.7956f), Widht = (int)(gain * 0.03640f), Height = 24 });
+            offset += (int)(gain * 0.03640f);
+            AddCollider(new RectCollider() { X = offset, Y = (int)(gain * 0.8256f), Widht = (int)(gain * 0.04854f), Height = 24 });
+            offset += (int)(gain * 0.04854f);
+
+            AddCollider(new RectCollider() { X = offset, Y = (int)(gain * 0.8456f), Widht = (int)(gain * 0.79009f), Height = 24 });
+            offset += (int)(gain * 0.79009f);
+
+            AddCollider(new RectCollider() { X = offset, Y = (int)(gain * 0.8256f), Widht = (int)(gain * 0.04854f), Height = 24 });
+            offset += (int)(gain * 0.04854f);
+            AddCollider(new RectCollider() { X = offset, Y = (int)(gain * 0.7956f), Widht = (int)(gain * 0.03640f), Height = 24 });
+            offset += (int)(gain * 0.03640f);
+            AddCollider(new RectCollider() { X = offset, Y = (int)(gain * 0.7556f), Widht = (int)(gain * 0.09708f), Height = 24 });
+            offset += (int)(gain * 0.09708f);
+            AddCollider(new RectCollider() { X = offset, Y = (int)(gain * 0.7156f), Widht = (int)(gain * 0.05325f), Height = 24 });
+            offset += (int)(gain * 0.05325f);
+            AddCollider(new RectCollider() { X = offset, Y = (int)(gain * 0.6856f), Widht = (int)(gain * 0.12592f), Height = 24 });
+            offset += (int)(gain * 0.12592f);
+            AddCollider(new RectCollider() { X = offset, Y = (int)(gain * 0.7156f), Widht = (int)(gain * 0.10510f), Height = 24 });
+            offset += (int)(gain * 0.10510f);
+            AddCollider(new RectCollider() { X = offset, Y = (int)(gain * 0.7756f), Widht = (int)(gain * 0.08737f), Height = 24 });
+            offset += (int)(gain * 0.08737f);
+            AddCollider(new RectCollider() { X = offset, Y = (int)(gain * 0.8356f), Widht = (int)(gain * 0.0656f), Height = 24 });
+            offset += (int)(gain * 0.0656f);
+            AddCollider(new RectCollider() { X = offset, Y = (int)(gain * 0.8556f), Widht = (int)(gain * 0.0256f), Height = 24 });
         }
 
         public override void LoadContent()

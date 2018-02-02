@@ -59,6 +59,10 @@ namespace Arkanoid.Entities
                 if (isPaddleCollide)
                 {
                     direction.Y *= -1;
+                    
+                    //direction.X += <someEffectFromPaddleFriction>;
+                    //direction.X += <someEffectFromDiferenceOfPositionsBetweenBallAndPaddle>;
+
                     isPaddleCollide = false;
                 }
                 else
@@ -144,7 +148,6 @@ namespace Arkanoid.Entities
         public override void OnCollisionEnter(Collider other)
         {
             isPaddleCollide |= other.Owner.name.Equals("Paddle");
-
         }
 
         #endregion 

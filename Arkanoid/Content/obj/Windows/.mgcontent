@@ -4,23 +4,23 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/SC/PROYECTOS/MGArkanoid/Arkanoid/Content/Sprites/background_1.png</File>
-    <File>C:/SC/PROYECTOS/MGArkanoid/Arkanoid/Content/Sprites/background_2.jpg</File>
-    <File>C:/SC/PROYECTOS/MGArkanoid/Arkanoid/Content/Sprites/ball_blue.png</File>
-    <File>C:/SC/PROYECTOS/MGArkanoid/Arkanoid/Content/Sprites/ball_gray.png</File>
-    <File>C:/SC/PROYECTOS/MGArkanoid/Arkanoid/Content/Sprites/brick_blue_rectangle.png</File>
-    <File>C:/SC/PROYECTOS/MGArkanoid/Arkanoid/Content/Sprites/brick_gray_rectangle.png</File>
-    <File>C:/SC/PROYECTOS/MGArkanoid/Arkanoid/Content/Sprites/brick_green_rectangle.png</File>
-    <File>C:/SC/PROYECTOS/MGArkanoid/Arkanoid/Content/Sprites/brick_purple_rectangle.png</File>
-    <File>C:/SC/PROYECTOS/MGArkanoid/Arkanoid/Content/Sprites/brick_yellow_rectangle.png</File>
-    <File>C:/SC/PROYECTOS/MGArkanoid/Arkanoid/Content/Sprites/paddle_blue.png</File>
-    <File>C:/SC/PROYECTOS/MGArkanoid/Arkanoid/Content/Sprites/paddle_red.png</File>
-    <File>C:/SC/PROYECTOS/MGArkanoid/Arkanoid/Content/Sprites/paddle_tech.png</File>
-    <File>C:/SC/PROYECTOS/MGArkanoid/Arkanoid/Content/Sprites/paddle_tech_1.png</File>
-    <File>C:/SC/PROYECTOS/MGArkanoid/Arkanoid/Content/Sprites/paddle_tech_2.png</File>
-    <File>C:/SC/PROYECTOS/MGArkanoid/Arkanoid/Content/Sprites/paddle_tech_3.png</File>
-    <File>C:/SC/PROYECTOS/MGArkanoid/Arkanoid/Content/Sprites/paddle_tech_4.png</File>
-    <File>C:/SC/PROYECTOS/MGArkanoid/Arkanoid/Content/Sprites/paddle_tech_5.png</File>
-    <File>C:/SC/PROYECTOS/MGArkanoid/Arkanoid/Content/Fonts/DebugFont.spritefont</File>
+    <File>C:/Users/Jaime/Documents/MGArkanoid/Arkanoid/Content/Sprites/background_1.png</File>
+    <File>C:/Users/Jaime/Documents/MGArkanoid/Arkanoid/Content/Sprites/background_2.jpg</File>
+    <File>C:/Users/Jaime/Documents/MGArkanoid/Arkanoid/Content/Sprites/ball_blue.png</File>
+    <File>C:/Users/Jaime/Documents/MGArkanoid/Arkanoid/Content/Sprites/ball_gray.png</File>
+    <File>C:/Users/Jaime/Documents/MGArkanoid/Arkanoid/Content/Sprites/brick_blue_rectangle.png</File>
+    <File>C:/Users/Jaime/Documents/MGArkanoid/Arkanoid/Content/Sprites/brick_gray_rectangle.png</File>
+    <File>C:/Users/Jaime/Documents/MGArkanoid/Arkanoid/Content/Sprites/brick_green_rectangle.png</File>
+    <File>C:/Users/Jaime/Documents/MGArkanoid/Arkanoid/Content/Sprites/brick_purple_rectangle.png</File>
+    <File>C:/Users/Jaime/Documents/MGArkanoid/Arkanoid/Content/Sprites/brick_yellow_rectangle.png</File>
+    <File>C:/Users/Jaime/Documents/MGArkanoid/Arkanoid/Content/Sprites/paddle_blue.png</File>
+    <File>C:/Users/Jaime/Documents/MGArkanoid/Arkanoid/Content/Sprites/paddle_red.png</File>
+    <File>C:/Users/Jaime/Documents/MGArkanoid/Arkanoid/Content/Sprites/paddle_tech.png</File>
+    <File>C:/Users/Jaime/Documents/MGArkanoid/Arkanoid/Content/Sprites/paddle_tech_1.png</File>
+    <File>C:/Users/Jaime/Documents/MGArkanoid/Arkanoid/Content/Sprites/paddle_tech_2.png</File>
+    <File>C:/Users/Jaime/Documents/MGArkanoid/Arkanoid/Content/Sprites/paddle_tech_3.png</File>
+    <File>C:/Users/Jaime/Documents/MGArkanoid/Arkanoid/Content/Sprites/paddle_tech_4.png</File>
+    <File>C:/Users/Jaime/Documents/MGArkanoid/Arkanoid/Content/Sprites/paddle_tech_5.png</File>
+    <File>C:/Users/Jaime/Documents/MGArkanoid/Arkanoid/Content/Fonts/DebugFont.spritefont</File>
   </SourceFiles>
 </SourceFileCollection>
