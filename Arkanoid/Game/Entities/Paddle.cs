@@ -23,7 +23,7 @@ namespace Arkanoid.Entities
         private Random randomGen = new Random();
         private KeyboardState keyState;
         private KeyboardState lastKeyState;
-        public Vector2[] simplifiedShape;
+        public Vector2[] normals;
         float gain = 100.0f;
         int offset = 25;
 
@@ -38,26 +38,26 @@ namespace Arkanoid.Entities
             size.Y = (int)2.25f*gain;
 
             //normal vectors that describe each collision surface
-            this.simplifiedShape = new Vector2[10];
-            this.simplifiedShape[0] = new Vector2(-1,0);
-            this.simplifiedShape[1] = new Vector2(-0.780868f,0.624695f);
-            this.simplifiedShape[2] = new Vector2(-0.707106f,0.707106f);
-            this.simplifiedShape[3] = new Vector2(-0.573462f,0.819232f);
-            this.simplifiedShape[4] = new Vector2(0,1);
-            this.simplifiedShape[5] = new Vector2(0.573462f, 0.819232f);
-            this.simplifiedShape[6] = new Vector2(0.287348f,0.957826f);
-            this.simplifiedShape[7] = new Vector2(0.987826f,0.371391f);
-            this.simplifiedShape[8] = new Vector2(0.707106f, 0.707106f);
-            this.simplifiedShape[9] = new Vector2(0,1);
-            this.simplifiedShape[10] = new Vector2(-0.707106f, 0.707106f);
-            this.simplifiedShape[11] = new Vector2(-0.987826f, 0.371391f);
-            this.simplifiedShape[12] = new Vector2(-0.287348f, 0.957826f);
-            this.simplifiedShape[13] = new Vector2(-0.573462f, 0.819232f);
-            this.simplifiedShape[14] = new Vector2(0, 1);
-            this.simplifiedShape[15] = new Vector2(0.573462f, 0.819232f);
-            this.simplifiedShape[16] = new Vector2(0.707106f, 0.707106f);
-            this.simplifiedShape[17] = new Vector2(0.780868f, 0.624695f);
-            this.simplifiedShape[18] = new Vector2(1, 0);
+            this.normals = new Vector2[10];
+            this.normals[0] = new Vector2(-1,0);
+            this.normals[1] = new Vector2(-0.780868f,0.624695f);
+            this.normals[2] = new Vector2(-0.707106f,0.707106f);
+            this.normals[3] = new Vector2(-0.573462f,0.819232f);
+            this.normals[4] = new Vector2(0,1);
+            this.normals[5] = new Vector2(0.573462f, 0.819232f);
+            this.normals[6] = new Vector2(0.287348f,0.957826f);
+            this.normals[7] = new Vector2(0.987826f,0.371391f);
+            this.normals[8] = new Vector2(0.707106f, 0.707106f);
+            this.normals[9] = new Vector2(0,1);
+            this.normals[10] = new Vector2(-0.707106f, 0.707106f);
+            this.normals[11] = new Vector2(-0.987826f, 0.371391f);
+            this.normals[12] = new Vector2(-0.287348f, 0.957826f);
+            this.normals[13] = new Vector2(-0.573462f, 0.819232f);
+            this.normals[14] = new Vector2(0, 1);
+            this.normals[15] = new Vector2(0.573462f, 0.819232f);
+            this.normals[16] = new Vector2(0.707106f, 0.707106f);
+            this.normals[17] = new Vector2(0.780868f, 0.624695f);
+            this.normals[18] = new Vector2(1, 0);
         }
 
         public override void Initialize()
