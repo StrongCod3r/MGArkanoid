@@ -38,7 +38,7 @@ namespace Arkanoid.Entities
             size.Y = (int)2.25f*gain;
 
             //normal vectors that describe each collision surface
-            this.simplifiedShape = new Vector2[10];
+            this.simplifiedShape = new Vector2[19];
             this.simplifiedShape[0] = new Vector2(-1,0);
             this.simplifiedShape[1] = new Vector2(-0.780868f,0.624695f);
             this.simplifiedShape[2] = new Vector2(-0.707106f,0.707106f);
