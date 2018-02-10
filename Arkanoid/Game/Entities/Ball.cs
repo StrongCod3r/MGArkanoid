@@ -22,11 +22,12 @@ namespace Arkanoid.Entities
         private float radius;
         public Vector2 direction;
         private float acceleration = 5;
-        private float speed = 500;
+        private float speed = 550;
 
         private bool isPaddleCollide;
         private Vector2 normalCollide;
         int currentCollisions = 0;
+        int fpsCount = 0;
 
         Paddle paddle;
 
@@ -61,19 +62,21 @@ namespace Arkanoid.Entities
 
                 if (isPaddleCollide)
                 {
-                    if (this.currentCollisions != 1)
+                    if (this.fpsCount <10)
                     {
-                        position += (-direction * 5); //go five pixels back in time, eventually just 1 Rect will stay
+                        //position += (-direction * 5); //go five pixels back in time, eventually just 1 Rect will stay
                     }
                     else
                     {
                         float m = 1.0f;
-                        Vector2 tangent = new Vector2(-(this.normalCollide.X * m / this.normalCollide.Y), m);
+                        Vector2 tangent = new Vector2(this.direction.Y, -this.direction.X);
 
                         this.direction = -this.direction + 2 * ((this.normalCollide.Y * this.direction.X - this.normalCollide.X * this.direction.Y) /
                             (this.normalCollide.X * tangent.Y - this.normalCollide.Y * tangent.X)) * tangent;
+                        this.direction.Normalize();
 
                         //after this process is done, now comes the best time to draw on the screen
+                        this.fpsCount = 0;
                     }
                     this.isPaddleCollide = false;
                     this.currentCollisions = 0;
@@ -83,6 +86,7 @@ namespace Arkanoid.Entities
                     if (IsCollideX()) direction.X *= -1;
                     if (IsCollideY()) direction.Y *= -1;
                 }
+                Game.Window.Title = "" + this.direction.X + "," + this.direction.Y+"  fpsPassed: " + fpsCount;
             }
 
         }
@@ -91,7 +95,7 @@ namespace Arkanoid.Entities
         {
             if (!ballTexture.Equals(null))
                 SB.DrawSprite(ballTexture, new Rectangle((int)position.X, (int)position.Y, (int)size.X, (int)size.Y), Color.White);
-
+            fpsCount++;
         }
 
 
@@ -161,7 +165,8 @@ namespace Arkanoid.Entities
         public override void OnCollisionEnter(Collider local, Collider other)
         {
             isPaddleCollide |= other.Owner.name.Equals("Paddle");
-            currentCollisions++;
+            if(other.Owner.name.Equals("Paddle"))
+                currentCollisions++;
 
             //this is gonna be used just if there is only one collition, so rewrite is not a problem
             this.normalCollide = other.normal;
