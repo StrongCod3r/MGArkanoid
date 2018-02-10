@@ -23,7 +23,10 @@ namespace Arkanoid.Entities
         public Vector2 direction;
         private float acceleration = 5;
         private float speed = 500;
+
         private bool isPaddleCollide;
+        private Vector2 normalCollide;
+        int currentCollisions = 0;
 
         Paddle paddle;
 
@@ -58,39 +61,22 @@ namespace Arkanoid.Entities
 
                 if (isPaddleCollide)
                 {
-    
-                    //decision maker
-                    //new list of CollidedRects
-                    int numberOfRectsWhereTheBallCouldBe = 3;//coz of yes for explanatory purpous (list.size in reallity)
-                    while (numberOfRectsWhereTheBallCouldBe > 1)
+                    if (this.currentCollisions != 1)
                     {
-                        //rectNumber = FirstOfTheListOfCollides;
                         position += (-direction * 5); //go five pixels back in time, eventually just 1 Rect will stay
-                        //new List of CollidedRects
-                        //numberOfRectsWhereTheBallCouldBe = list.size;
                     }
-                    //at the end of this loop, we'll have the last touched rectangle and the ball in the surface of the paddle (or close enough), not inside
-                    //next, the direction of the ball is computed 
-                    int rectNumber = 0;
-                    /*/this calculate the reflected direction (with rectnumber as the cuotient to chose the corresponding normal) wrt this normal
-                    float inAngle,outAngle;
-                    inAngle = (float)Math.Acos(Vector2.Dot(-this.direction, paddle.normals[rectNumber]));
-                    outAngle = (float)Math.Atan2(paddle.normals[rectNumber].Y, paddle.normals[rectNumber].X) - inAngle;
-                    this.direction.X = (float)Math.Cos(outAngle);
-                    this.direction.Y = (float)Math.Sin(outAngle);
-                    */
+                    else
+                    {
+                        float m = 1.0f;
+                        Vector2 tangent = new Vector2(-(this.normalCollide.X * m / this.normalCollide.Y), m);
 
-                    //improved option more complex, but the old processors will be glad
-                    //it must work once the collision resolution is implemented (assuming no misstakes xD)
-                    float m = 1.0f;
-                    Vector2 tangent = new Vector2(-(paddle.normals[rectNumber].X * m / paddle.normals[rectNumber].Y),m);
+                        this.direction = -this.direction + 2 * ((this.normalCollide.Y * this.direction.X - this.normalCollide.X * this.direction.Y) /
+                            (this.normalCollide.X * tangent.Y - this.normalCollide.Y * tangent.X)) * tangent;
 
-                    this.direction = this.direction + 2*((paddle.normals[rectNumber].Y * this.direction.X - paddle.normals[rectNumber].X * this.direction.Y)/
-                        (paddle.normals[rectNumber].X*tangent.Y - paddle.normals[rectNumber].Y*tangent.X)) * tangent;
-
-                    isPaddleCollide = false;
-                    //after this process is done, now comes the best time to draw on the screen
-
+                        //after this process is done, now comes the best time to draw on the screen
+                    }
+                    this.isPaddleCollide = false;
+                    this.currentCollisions = 0;
                 }
                 else
                 {
@@ -175,6 +161,10 @@ namespace Arkanoid.Entities
         public override void OnCollisionEnter(Collider local, Collider other)
         {
             isPaddleCollide |= other.Owner.name.Equals("Paddle");
+            currentCollisions++;
+
+            //this is gonna be used just if there is only one collition, so rewrite is not a problem
+            this.normalCollide = other.normal;
         }
 
         #endregion 
