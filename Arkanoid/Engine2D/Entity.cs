@@ -21,8 +21,11 @@ namespace Engine2D
         public bool enable;
         private List<Collider> collidersList;
         public Vector2 position = Vector2.Zero;
+        public Vector2 direction = Vector2.Zero;
+        public float speed = 0;
         public Vector2 size = new Vector2(40, 40);
         public bool destroy = false;
+        public bool sleeping = true;
 
         #endregion
 
@@ -30,6 +33,7 @@ namespace Engine2D
         public ContentManager Content { get { return Game.Content; } }
         public E2D Game { get => game; internal set => game = value; }
         internal List<Collider> Colliders { get => collidersList;}
+        public float Speed { get => speed; set => speed = value; }
         #endregion
 
         #region METHODS
@@ -67,7 +71,13 @@ namespace Engine2D
         #region METHODS OVERRIDE
         public virtual void Initialize() { }
         public virtual void LoadContent() { }
-        public virtual void Update(GameTime gameTime) { }
+        public virtual void Update(GameTime gameTime)
+        {
+            if (speed == 0 || direction == Vector2.Zero)
+                this.sleeping = true;
+            else
+                this.sleeping = false;
+        }
         public virtual void Draw(GameTime gameTime, SpriteBatch SB) { }
 
         public virtual void OnCollisionEnter(Collider local, Collider other) { }

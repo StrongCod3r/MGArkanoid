@@ -18,7 +18,6 @@ namespace Arkanoid.Entities
     class Paddle : Entity
     {
         Texture2D paddleSprite;
-        float speed;
         List<Ball> currentBalls = new List<Ball>();
         private Random randomGen = new Random();
         private KeyboardState keyState;
@@ -32,9 +31,10 @@ namespace Arkanoid.Entities
             this.name = "Paddle";
 
             position.X = x;
-            position.Y = y - 300;
+            position.Y = y - 100;
             size.X = (int)4.0f * gain;
             size.Y = (int)2.25f * gain;
+            speed = 10;
         }
 
         public override void Initialize()
@@ -91,13 +91,23 @@ namespace Arkanoid.Entities
         {
             keyState = Keyboard.GetState();
 
+            //using the directions is gonna be useful for collitions 
             if (Keyboard.GetState().IsKeyDown(Keys.Left) && position.X > 0)
-                position.X -= 10;
+            {
+                direction = new Vector2(-1, 0);
+                position += direction * speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
 
             if (Keyboard.GetState().IsKeyDown(Keys.Right) && (position.X + size.X < Game.SCREEN_WIDTH))
-                position.X += 10;
+            {
+                direction = new Vector2(-1, 0);
+                position += direction * speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
 
-            
+            if (Keyboard.GetState().IsKeyUp(Keys.Left) && Keyboard.GetState().IsKeyUp(Keys.Right))
+                direction = Vector2.Zero;
+
+
             if (Keyboard.GetState().IsKeyDown(Keys.Space))
                 ConectBall(); 
 

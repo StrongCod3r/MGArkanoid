@@ -40,6 +40,12 @@ namespace Engine2D.Managers
                 //=====
                 for (int i = 0; i < colliders.Count; i++)
                 {
+                    //we do not check collisions of not moving entity with other not moving entity
+                    if (colliders[i].Owner.sleeping)
+                    {
+                        continue;
+                    }
+
                     for (int j = i + 1; j < colliders.Count; j++)
                     {
                         if (!ReferenceEquals(colliders[i].Owner, colliders[j].Owner) && colliders[i].enable && colliders[j].enable)
