@@ -43,6 +43,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Engine2D\Colliders\CircleCollider.cs" />
+    <Compile Include="Engine2D\Colliders\VectorCollider.cs" />
     <Compile Include="Engine2D\Colliders\Collider.cs" />
     <Compile Include="Engine2D\Colliders\RectCollider.cs" />
     <Compile Include="Engine2D\Colliders\TypeCollider.cs" />

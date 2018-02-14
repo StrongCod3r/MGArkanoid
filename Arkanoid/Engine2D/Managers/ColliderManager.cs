@@ -122,7 +122,17 @@ namespace Engine2D.Managers
                 return true;
 
             return false;
-        } 
+        }
+
+        public bool CheckCollision(VectorCollider vector1, VectorCollider vector2)
+        {
+            int t1;
+            int t2;
+
+            //wip
+            return false;
+            
+        }
         #endregion
 
 

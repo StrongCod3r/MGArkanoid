@@ -86,6 +86,7 @@ namespace Arkanoid.Entities
                 Game.Window.Title = "" + this.direction.X + "," + this.direction.Y+"  sleepingBall?: " + this.sleeping;
             }
 
+            phisicsUpdate();
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch SB)

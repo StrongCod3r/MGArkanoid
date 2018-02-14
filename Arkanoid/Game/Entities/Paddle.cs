@@ -34,7 +34,7 @@ namespace Arkanoid.Entities
             position.Y = y - 100;
             size.X = (int)4.0f * gain;
             size.Y = (int)2.25f * gain;
-            speed = 10;
+            speed = 350;
         }
 
         public override void Initialize()
@@ -100,7 +100,7 @@ namespace Arkanoid.Entities
 
             if (Keyboard.GetState().IsKeyDown(Keys.Right) && (position.X + size.X < Game.SCREEN_WIDTH))
             {
-                direction = new Vector2(-1, 0);
+                direction = new Vector2(1, 0);
                 position += direction * speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
 
@@ -116,6 +116,8 @@ namespace Arkanoid.Entities
 
 
             lastKeyState = keyState;
+
+            phisicsUpdate();
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch SB)

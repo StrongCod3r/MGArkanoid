@@ -40,7 +40,7 @@ namespace Arkanoid.Entities
 
         public override void Update(GameTime gameTime)
         {
-
+        
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch SB)

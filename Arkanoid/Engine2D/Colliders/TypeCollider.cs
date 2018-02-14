@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace Engine2D.Colliders
 {
-    public enum TypeCollider { Rectangle, Circle}
+    public enum TypeCollider { Rectangle, Circle, Vector}
 }

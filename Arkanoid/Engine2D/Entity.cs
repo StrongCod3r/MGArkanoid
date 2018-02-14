@@ -71,16 +71,22 @@ namespace Engine2D
         #region METHODS OVERRIDE
         public virtual void Initialize() { }
         public virtual void LoadContent() { }
-        public virtual void Update(GameTime gameTime)
-        {
-            if (speed == 0 || direction == Vector2.Zero)
-                this.sleeping = true;
-            else
-                this.sleeping = false;
-        }
+        public virtual void Update(GameTime gameTime){ }
         public virtual void Draw(GameTime gameTime, SpriteBatch SB) { }
 
         public virtual void OnCollisionEnter(Collider local, Collider other) { }
+
+        /// <summary>
+        /// phisicsUpdate (work in progress) autoupdate flags that can be used to compute collisions 
+        /// </summary>
+        public void phisicsUpdate()
+        {
+            //by now, it change
+            if (speed == 0 || direction == Vector2.Zero)
+                sleeping = true;
+            else
+                sleeping = false;
+        }
         #endregion
     }
 }
