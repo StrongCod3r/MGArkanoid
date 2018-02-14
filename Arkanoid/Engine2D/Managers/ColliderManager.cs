@@ -124,14 +124,30 @@ namespace Engine2D.Managers
             return false;
         }
 
-        public bool CheckCollision(VectorCollider vector1, VectorCollider vector2)
+        /// <summary>
+        /// Check if 2 vectors collide in space and return the point of the intersection
+        /// </summary>
+        /// <param name="vector1">First VectorCollider to test</param>
+        /// <param name="vector2">Second VectorCollider to test</param>
+        /// <param name="intersecPoint">Var to store the intersection Point</param>
+        /// <returns></returns>
+        public bool CheckCollision(VectorCollider vector1, VectorCollider vector2, out Vector2 intersecPoint)
         {
-            int t1;
-            int t2;
+            float t2;
 
-            //wip
-            return false;
-            
+            t2 = (vector1.vector.Y * (vector1.start.X - vector2.start.X) + vector1.vector.X * (vector2.start.Y - vector1.start.Y)) /
+                (vector2.vector.X * vector1.vector.Y - vector1.start.X * vector2.vector.Y);
+
+            if (t2 < 0 || t2 > 1)
+            {
+                intersecPoint = Vector2.Zero;
+                return false;
+            }
+            else
+            {
+                intersecPoint = vector2.start + t2 * vector2.vector;
+                return true;
+            }
         }
         #endregion
 

@@ -13,8 +13,8 @@ namespace Engine2D.Colliders
 {
     class VectorCollider : Collider
     {
-        public Vector2 Start;
-        public Vector2 End;
+        public Vector2 start;
+        public Vector2 end;
         public Vector2 vector;
 
         /// <summary>
@@ -24,16 +24,16 @@ namespace Engine2D.Colliders
         /// <param name="relativeEnd"> final point of the vector relative to the Owner position</param>
         public VectorCollider(Vector2 relativeStart, Vector2 relativeEnd)
         {
-            Start = new Vector2(Owner.position.X + relativeStart.X, Owner.position.Y + relativeStart.Y);
-            End = new Vector2(Owner.position.X + relativeEnd.X, Owner.position.Y + relativeEnd.Y);
-            vector = End - Start;
+            start = new Vector2(Owner.position.X + relativeStart.X, Owner.position.Y + relativeStart.Y);
+            end = new Vector2(Owner.position.X + relativeEnd.X, Owner.position.Y + relativeEnd.Y);
+            vector = end - start;
         }
 
         public override void Initialize() { }
 
         public override void Draw(GameTime gameTime, SpriteBatch SB) 
         {
-            SB.DrawLine(Start, End, Color.Red);
+            SB.DrawLine(start, end, Color.Red);
         }
     }
 }
