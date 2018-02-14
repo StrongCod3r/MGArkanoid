@@ -26,7 +26,7 @@ namespace Engine2D.Colliders
         {
             start = new Vector2(relativeStart.X, relativeStart.Y);
             end = new Vector2(relativeEnd.X, relativeEnd.Y);
-            normal = new Vector2(vector.Y, -vector.X);
+            normal = Vector2.Normalize(new Vector2(vector.Y, -vector.X));
             this.type = TypeCollider.Vector;
             initialized = false;
         }
@@ -43,6 +43,7 @@ namespace Engine2D.Colliders
         public override void Draw(GameTime gameTime, SpriteBatch SB) 
         {
             SB.DrawLine(start, end, Color.Red,2);
+            SB.DrawLine(start + 0.5f * vector,start + 0.5f * vector + normal, Color.Green, 2);
         }
     }
 }
