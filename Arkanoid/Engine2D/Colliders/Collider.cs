@@ -14,7 +14,6 @@ namespace Engine2D.Colliders
     {
         public Entity Owner { get; set; }
         public Vector2 normal;
-        public Vector2 Normal { get => normal; set => normal = value; }
         protected int x, y;
         protected int width, height;
         protected TypeCollider type;

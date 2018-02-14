@@ -39,8 +39,9 @@ namespace Arkanoid.Entities
 
         public override void Initialize()
         {
-            float gain = this.gain*1.5f;
-            int offset = (int)(gain/3.0f);
+            float scale = this.gain*4f;
+            //Bint offset = (int)(scale/3.0f);
+            /*
             AddCollider(new RectCollider() { X = offset, Y = (int)(gain * 0.8556f), Widht = (int)(gain * 0.0256f), Height = 24, Normal = new Vector2(-1, 0) });
             offset += (int)(gain * 0.0256f);
             AddCollider(new RectCollider() { X = offset, Y = (int)(gain * 0.8300f), Widht = (int)(gain * 0.0656f), Height = 24, Normal = new Vector2(-0.780868f, 0.624695f) });
@@ -80,6 +81,13 @@ namespace Arkanoid.Entities
             AddCollider(new RectCollider() { X = offset, Y = (int)(gain * 0.8356f), Widht = (int)(gain * 0.0656f), Height = 24, Normal = new Vector2(0.780868f, 0.624695f) });
             offset += (int)(gain * 0.0656f);
             AddCollider(new RectCollider() { X = offset, Y = (int)(gain * 0.8556f), Widht = (int)(gain * 0.0256f), Height = 24, Normal = new Vector2(1, 0) });
+            */
+
+            AddCollider(new VectorCollider(new Vector2(0 * scale, 100), new Vector2(0.35f * scale, 150)));
+            
+            AddCollider(new VectorCollider(new Vector2(0.75f * scale, 100), new Vector2(1.0f * scale, 100)));
+
+
         }
 
         public override void LoadContent()

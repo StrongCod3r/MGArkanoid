@@ -16,7 +16,7 @@ namespace Engine2D.Colliders
         public Vector2 start;
         public Vector2 end;
         public Vector2 vector;
-
+        
         /// <summary>
         /// Creates a line collider defined between 2 points given with respect to the owner object position
         /// </summary>
@@ -24,16 +24,25 @@ namespace Engine2D.Colliders
         /// <param name="relativeEnd"> final point of the vector relative to the Owner position</param>
         public VectorCollider(Vector2 relativeStart, Vector2 relativeEnd)
         {
-            start = new Vector2(Owner.position.X + relativeStart.X, Owner.position.Y + relativeStart.Y);
-            end = new Vector2(Owner.position.X + relativeEnd.X, Owner.position.Y + relativeEnd.Y);
-            vector = end - start;
+            start = new Vector2(relativeStart.X, relativeStart.Y);
+            end = new Vector2(relativeEnd.X, relativeEnd.Y);
+            normal = new Vector2(vector.Y, -vector.X);
+            this.type = TypeCollider.Vector;
+            initialized = false;
         }
 
-        public override void Initialize() { }
+        public override void Initialize()
+        {
+            start = Owner.position + start;
+            end = Owner.position + end;
+            vector = end - start;
+            normal = new Vector2(vector.Y, -vector.X);
+            initialized = true;
+        }
 
         public override void Draw(GameTime gameTime, SpriteBatch SB) 
         {
-            SB.DrawLine(start, end, Color.Red);
+            SB.DrawLine(start, end, Color.Red,2);
         }
     }
 }
