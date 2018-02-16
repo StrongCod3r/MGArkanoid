@@ -37,7 +37,8 @@ namespace Engine2D.Managers
             //if (elapsedTime >= 10)
             //{
                 elapsedTime = 0;
-                //=====
+            //=====
+            Vector2 intersecPoint;
                 for (int i = 0; i < colliders.Count; i++)
                 {
                     //we do not check collisions of not moving entity with other not moving entity
@@ -50,10 +51,10 @@ namespace Engine2D.Managers
                     {
                         if (!ReferenceEquals(colliders[i].Owner, colliders[j].Owner) && colliders[i].enable && colliders[j].enable)
                         {
-                            if (IsColliding(colliders[i], colliders[j]))
+                            if (IsColliding(colliders[i], colliders[j],out intersecPoint))
                             {
-                                colliders[i].Owner.OnCollisionEnter(colliders[i], colliders[j]);
-                                colliders[j].Owner.OnCollisionEnter(colliders[j], colliders[i]);
+                                colliders[i].Owner.OnCollisionEnter(colliders[i], colliders[j],intersecPoint);
+                                colliders[j].Owner.OnCollisionEnter(colliders[j], colliders[i],intersecPoint);
                             }
                         }
                     }
@@ -76,18 +77,20 @@ namespace Engine2D.Managers
         }
 
         #region METHODS COLLIDERS
-        public bool IsColliding(Collider obj1, Collider obj2)
+        public bool IsColliding(Collider obj1, Collider obj2,out Vector2 intersecPoint)
         {
-            if (obj1.Type == TypeCollider.Rectangle && obj2.Type == TypeCollider.Rectangle)
-                return CheckCollision(obj1 as RectCollider, obj2 as RectCollider);
-
-            else if (obj1.Type == TypeCollider.Rectangle && obj2.Type == TypeCollider.Circle)
-                return CheckCollision(obj2 as CircleCollider, obj1 as RectCollider);
+            intersecPoint = Vector2.Zero;
+            if (obj1.Type == TypeCollider.Vector && obj2.Type == TypeCollider.Vector)
+                return CheckCollision(obj1 as VectorCollider, obj2 as VectorCollider,out intersecPoint);
 
             else if (obj1.Type == TypeCollider.Circle && obj2.Type == TypeCollider.Circle)
                 return CheckCollision(obj1 as CircleCollider, obj2 as CircleCollider);
-            else
-                return CheckCollision(obj1 as CircleCollider, obj2 as RectCollider);
+
+            else if (obj1.Type == TypeCollider.Circle && obj2.Type == TypeCollider.Vector)
+                return CheckCollision(obj2 as VectorCollider, obj1 as CircleCollider, out intersecPoint);
+            else 
+                return CheckCollision(obj1 as VectorCollider, obj2 as CircleCollider, out intersecPoint);
+
         }
 
         public bool CheckCollision(RectCollider rect1, RectCollider rect2)
@@ -148,6 +151,53 @@ namespace Engine2D.Managers
                 intersecPoint = vector2.start + t2 * vector2.vector;
                 return true;
             }
+        }
+        /// <summary>
+        /// Check if vector (line segment) collide with a circunference in space and return the first point of the intersection
+        /// </summary>
+        /// <param name="vector"></param>
+        /// <param name="circle"></param>
+        /// <param name="intersecPoint"></param>
+        /// <returns></returns>
+        public bool CheckCollision(VectorCollider vector, CircleCollider circle, out Vector2 intersecPoint)
+        {
+            float a;
+            float b;
+            float c;
+            intersecPoint = Vector2.Zero;
+
+            a = Vector2.Dot(vector.vector, vector.vector);
+            b = Vector2.Dot(vector.start - circle.center, vector.vector) * 2;
+            c = Vector2.Dot(vector.start - circle.center, vector.start - circle.center) - circle.Radius*circle.Radius;
+
+            double sqrtTerm = b * b - 4 * a * c;
+            if (sqrtTerm < 0)
+            {
+                return false;
+            }
+            else
+            {
+                sqrtTerm = Math.Sqrt(sqrtTerm);
+
+                float t1 = (float)(-b - sqrtTerm) / (2 * a);
+                float t2 = (float)(-b + sqrtTerm) / (2 * a);
+
+                //t1 has preference, but if the starting point is inside the circle t2 will be the point
+                if (t1 >= 0 && t2 <= 1)
+                {
+                    intersecPoint = vector.start + t1 * vector.vector;
+                    return true;
+                }
+                if (t2 >= 0 && t2 <= 1)
+                {
+                    intersecPoint = vector.start + t2 * vector.vector;
+                    return true;
+                }
+                return false;
+            }
+            
+
+
         }
         #endregion
 

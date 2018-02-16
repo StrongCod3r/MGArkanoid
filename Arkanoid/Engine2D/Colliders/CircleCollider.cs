@@ -13,6 +13,7 @@ namespace Engine2D.Colliders
     class CircleCollider : Collider
     {
         private float radius;
+        public Vector2 center;
         public int X { get => (int)this.Owner.position.X + x + (int)Owner.size.X / 2; set => x = value; }
         public int Y { get => (int)this.Owner.position.Y + y + (int)Owner.size.Y / 2; set => y = value; }
         public int Width { get => 2 * (int)radius; }
@@ -28,6 +29,7 @@ namespace Engine2D.Colliders
         {
             if (radius == 0)
                 this.radius = (int)this.Owner.size.X / 2;
+            center = new Vector2(x, y);
 
             initialized = true;
         }

@@ -61,29 +61,19 @@ namespace Arkanoid.Entities
 
                 if (isPaddleCollide)
                 {
-                    if (this.currentCollisions >1)
-                    {
-                        //none
-                    }
-                    else
-                    {
-                        Vector2 refDirection;
-                        refDirection = this.direction - 2 * Vector2.Dot(this.direction, this.normalCollide) * this.normalCollide;
-                        refDirection.Normalize();
-                        this.direction = refDirection;
-                    
-                    }
+                    Vector2 refDirection;
+                    refDirection = this.direction - 2 * Vector2.Dot(this.direction, this.normalCollide) * this.normalCollide;
+                    refDirection.Normalize();
+                    this.direction = refDirection;
                     this.isPaddleCollide = false;
-                    this.currentCollisions = 0;
-                    
+                    Game.Window.Title = "" + this.direction.X + "," + this.direction.Y;
                 }
                 else
                 {
                     if (IsCollideX()) direction.X *= -1;
                     if (IsCollideY()) direction.Y *= -1;
                 }
-                iterations++;
-                Game.Window.Title = "" + this.direction.X + "," + this.direction.Y+"  sleepingBall?: " + this.sleeping;
+                
             }
 
             phisicsUpdate();
@@ -160,11 +150,9 @@ namespace Arkanoid.Entities
             position.Y = y;
         }
 
-        public override void OnCollisionEnter(Collider local, Collider other)
+        public override void OnCollisionEnter(Collider local, Collider other,Vector2 intersecPoint)
         {
             isPaddleCollide |= other.Owner.name.Equals("Paddle");
-            if(other.Owner.name.Equals("Paddle"))
-                currentCollisions++;
 
             this.normalCollide = other.normal;
         }

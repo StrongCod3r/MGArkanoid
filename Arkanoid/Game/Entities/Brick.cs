@@ -30,7 +30,10 @@ namespace Arkanoid.Entities
 
         public override void Initialize()
         {
-            AddCollider(new RectCollider());
+            AddCollider(new VectorCollider(new Vector2(0, 0),new Vector2(size.X, 0)));
+            AddCollider(new VectorCollider(new Vector2(0, size.Y), new Vector2(0, 0)));
+            AddCollider(new VectorCollider(new Vector2(size.X, size.Y), new Vector2(0,size.Y)));
+            AddCollider(new VectorCollider(new Vector2(size.X, 0), new Vector2(size.X, size.Y)));
         }
 
         public override void LoadContent()
@@ -48,7 +51,7 @@ namespace Arkanoid.Entities
             SB.DrawSprite(brickTexture, new Rectangle((int)position.X, (int)position.Y, (int)size.X, (int)size.Y), Color.White);
         }
 
-        public override void OnCollisionEnter(Collider local, Collider other)
+        public override void OnCollisionEnter(Collider local, Collider other, Vector2 intersecPoint)
         {
             if (other.Owner.name == "Ball")
                 destroy = true;
