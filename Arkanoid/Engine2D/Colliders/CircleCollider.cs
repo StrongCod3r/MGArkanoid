@@ -25,7 +25,7 @@ namespace Engine2D.Colliders
             this.type = TypeCollider.Circle;
         }
 
-        public override void Initialize()
+        public override void Update()
         {
             if (radius == 0)
                 this.radius = (int)this.Owner.size.X / 2;

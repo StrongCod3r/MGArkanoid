@@ -138,8 +138,8 @@ namespace Engine2D.Managers
         {
             float t2;
 
-            t2 = (vector1.vector.Y * (vector1.start.X - vector2.start.X) + vector1.vector.X * (vector2.start.Y - vector1.start.Y)) /
-                (vector2.vector.X * vector1.vector.Y - vector1.start.X * vector2.vector.Y);
+            t2 = (vector1.Vector.Y * (vector1.Start.X - vector2.Start.X) + vector1.Vector.X * (vector2.Start.Y - vector1.Start.Y)) /
+                (vector2.Vector.X * vector1.Vector.Y - vector1.Start.X * vector2.Vector.Y);
 
             if (t2 < 0 || t2 > 1)
             {
@@ -148,7 +148,7 @@ namespace Engine2D.Managers
             }
             else
             {
-                intersecPoint = vector2.start + t2 * vector2.vector;
+                intersecPoint = vector2.Start + t2 * vector2.Vector;
                 return true;
             }
         }
@@ -166,9 +166,9 @@ namespace Engine2D.Managers
             float c;
             intersecPoint = Vector2.Zero;
 
-            a = Vector2.Dot(vector.vector, vector.vector);
-            b = Vector2.Dot(vector.start - circle.center, vector.vector) * 2;
-            c = Vector2.Dot(vector.start - circle.center, vector.start - circle.center) - circle.Radius*circle.Radius;
+            a = Vector2.Dot(vector.Vector, vector.Vector);
+            b = Vector2.Dot(vector.Start - circle.center, vector.Vector) * 2;
+            c = Vector2.Dot(vector.Start - circle.center, vector.Start - circle.center) - circle.Radius*circle.Radius;
 
             double sqrtTerm = b * b - 4 * a * c;
             if (sqrtTerm < 0)
@@ -185,12 +185,12 @@ namespace Engine2D.Managers
                 //t1 has preference, but if the starting point is inside the circle t2 will be the point
                 if (t1 >= 0 && t2 <= 1)
                 {
-                    intersecPoint = vector.start + t1 * vector.vector;
+                    intersecPoint = vector.Start + t1 * vector.Vector;
                     return true;
                 }
                 if (t2 >= 0 && t2 <= 1)
                 {
-                    intersecPoint = vector.start + t2 * vector.vector;
+                    intersecPoint = vector.Start + t2 * vector.Vector;
                     return true;
                 }
                 return false;

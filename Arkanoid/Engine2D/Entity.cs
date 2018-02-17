@@ -49,7 +49,7 @@ namespace Engine2D
                 throw new NullReferenceException();
 
             collider.Owner = this;
-            collider.Initialize();
+            collider.Update();
             collidersList.Add(collider);
 
         }

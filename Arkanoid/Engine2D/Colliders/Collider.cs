@@ -22,7 +22,7 @@ namespace Engine2D.Colliders
         protected bool initialized;
         public bool Initialized { get => initialized; }
 
-        public virtual void Initialize() { }
+        public virtual void Update() { }
         public virtual void LoadContent() { }
         public virtual void Update(GameTime gameTime) { }
         public virtual void Draw(GameTime gameTime, SpriteBatch SB) { }

@@ -38,7 +38,7 @@ namespace Engine2D.Colliders
             this.type = TypeCollider.Rectangle;
         }
 
-        public override void Initialize()
+        public override void Update()
         {
             if (width == 0)
                 this.width = (int)this.Owner.size.X;
