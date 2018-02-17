@@ -46,8 +46,8 @@ namespace Arkanoid.Entities
         public override void Initialize()
         {
             this.name = "Ball";
-            AddCollider(new CircleCollider() { /*Radius = 50*/});
-            //AddCollider(new VectorCollider(new Vector2(0,10), new Vector2(20, 20)));
+            //AddCollider(new CircleCollider() { /*Radius = 50*/});
+            AddCollider(new VectorCollider(new Vector2(0,10), new Vector2(20, 20)));
             //AddCollider(new RectCollider());
             //AddCollider(new VectorCollider(1, 1));
         }
@@ -89,7 +89,7 @@ namespace Arkanoid.Entities
                 SB.DrawSprite(ballTexture, new Rectangle((int)position.X, (int)position.Y, (int)size.X, (int)size.Y), Color.White);
             if (intersectionTest.X != 0 || intersectionTest.Y != 0)
             {
-                SB.DrawCircle(intersectionTest, 3, 20, Color.Red, 5);
+                SB.DrawCircle(intersectionTest, 3, 20, Color.Red, 3);
                 intersectionTest = Vector2.Zero;
                 SB.DrawLine(prove.Start, prove.End, Color.Yellow, 4);
                 prove = null;
