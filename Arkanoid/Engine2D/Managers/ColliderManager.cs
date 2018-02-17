@@ -42,14 +42,14 @@ namespace Engine2D.Managers
                 for (int i = 0; i < colliders.Count; i++)
                 {
                     //we do not check collisions of not moving entity with other not moving entity
-                    if (colliders[i].Owner.sleeping)
+                    if (colliders[i].Owner.pasive)
                     {
                         continue;
                     }
 
                     for (int j = i + 1; j < colliders.Count; j++)
                     {
-                        if (!ReferenceEquals(colliders[i].Owner, colliders[j].Owner) && colliders[i].enable && colliders[j].enable)
+                        if (!ReferenceEquals(colliders[i].Owner, colliders[j].Owner) && posibleCollitions(colliders[i],colliders[j]))
                         {
                             if (IsColliding(colliders[i], colliders[j],out intersecPoint))
                             {
@@ -61,6 +61,21 @@ namespace Engine2D.Managers
                 }
             //}
 
+        }
+
+        private bool posibleCollitions(Collider collider1,Collider collider2)
+        {
+            //give collition cases for active elements, for example, Paddle will never collide with bricks or other pasive entities
+            switch (collider1.Owner.name)
+            {
+                case "Ball":
+                    return true;
+                case "Paddle":
+                    if (!collider2.Owner.pasive)
+                        return true;
+                    break;
+            }
+            return false;
         }
 
         private void GetColliders()
@@ -136,21 +151,23 @@ namespace Engine2D.Managers
         /// <returns></returns>
         public bool CheckCollision(VectorCollider vector1, VectorCollider vector2, out Vector2 intersecPoint)
         {
-            float t2;
+           
+            var div = (vector1.Vector.X * vector2.Vector.Y - vector1.Start.Y * vector2.Vector.X);
+            intersecPoint = Vector2.Zero;
 
-            t2 = (vector1.Vector.Y * (vector1.Start.X - vector2.Start.X) + vector1.Vector.X * (vector2.Start.Y - vector1.Start.Y)) /
-                (vector2.Vector.X * vector1.Vector.Y - vector1.Start.X * vector2.Vector.Y);
-
-            if (t2 < 0 || t2 > 1)
-            {
-                intersecPoint = Vector2.Zero;
+            if (div == 0)
                 return false;
-            }
-            else
+
+            var t1 = (vector2.Vector.Y * (vector2.Start.X - vector1.Start.X) - vector2.Vector.X * (vector2.Start.Y - vector1.Start.Y)) / div;
+            var t2 = (vector1.Vector.Y * (vector2.Start.X - vector1.Start.X) - vector1.Vector.X * (vector2.Start.Y - vector1.Start.Y)) /div;
+
+            if (t2 >= 0 && t2 <= 1 && t1 >= 0 && t1 <=1)
             {
                 intersecPoint = vector2.Start + t2 * vector2.Vector;
                 return true;
             }
+            else
+                return false;
         }
         /// <summary>
         /// Check if vector (line segment) collide with a circunference in space and return the first point of the intersection

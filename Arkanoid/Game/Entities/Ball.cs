@@ -28,6 +28,8 @@ namespace Arkanoid.Entities
         int iterations = 0;
         Paddle paddle;
         int fpsCount = 0;
+        Vector2 intersectionTest;
+        VectorCollider prove;
 
         public Ball(int x, int y, Paddle paddle)
         {
@@ -36,14 +38,16 @@ namespace Arkanoid.Entities
             size = new Vector2(20, 20);
             caught = false;
             direction = new Vector2(0.7071067812f, 0.7071067812f);
-            speed = 500;
-            radius = 5;  
+            speed = 100;
+            radius = 5;
+            pasive = false;
         }
 
         public override void Initialize()
         {
             this.name = "Ball";
             AddCollider(new CircleCollider() { /*Radius = 50*/});
+            //AddCollider(new VectorCollider(new Vector2(0,10), new Vector2(20, 20)));
             //AddCollider(new RectCollider());
             //AddCollider(new VectorCollider(1, 1));
         }
@@ -77,14 +81,20 @@ namespace Arkanoid.Entities
                 
             }
 
-            phisicsUpdate();
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch SB)
         {
             if (!ballTexture.Equals(null))
                 SB.DrawSprite(ballTexture, new Rectangle((int)position.X, (int)position.Y, (int)size.X, (int)size.Y), Color.White);
-            fpsCount++;
+            if (intersectionTest.X != 0 || intersectionTest.Y != 0)
+            {
+                SB.DrawCircle(intersectionTest, 3, 20, Color.Red, 5);
+                intersectionTest = Vector2.Zero;
+                SB.DrawLine(prove.Start, prove.End, Color.Yellow, 4);
+                prove = null;
+            }
+
         }
 
 
@@ -157,8 +167,10 @@ namespace Arkanoid.Entities
 
             this.normalCollide = other.normal;
 
-            if (other.Owner.tag.Equals("Player"))
+            if (other.Owner.tag.Equals("Player") || local.Owner.tag.Equals("Player"))
                 Game.Window.Title = "BALL ==> PADDLE";
+            intersectionTest = intersecPoint;
+            prove = (VectorCollider)other;
         }
 
         #endregion 

@@ -46,7 +46,7 @@ namespace Engine2D.Colliders
         {
             get
             {
-                return new Vector2(Vector.X, Vector.Y);
+                return Vector2.Normalize(new Vector2(Vector.Y, -Vector.X));
             }
         }
         
@@ -76,7 +76,7 @@ namespace Engine2D.Colliders
         public override void Draw(GameTime gameTime, SpriteBatch SB) 
         {
             SB.DrawLine(Start, End, Color.Red,2);
-            SB.DrawLine(Start + 0.5f * Vector, Start + 0.5f * Vector + Normal, Color.Green, 2);
+            SB.DrawLine(Start + 0.5f * Vector, Start + 0.5f * Vector + Normal*30, Color.Green, 2);
         }
     }
 }

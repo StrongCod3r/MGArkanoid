@@ -25,7 +25,7 @@ namespace Engine2D
         public float speed = 0;
         public Vector2 size = new Vector2(40, 40);
         public bool destroy = false;
-        public bool sleeping = true;
+        public bool pasive = false;
 
         #endregion
 
@@ -75,18 +75,6 @@ namespace Engine2D
         public virtual void Draw(GameTime gameTime, SpriteBatch SB) { }
 
         public virtual void OnCollisionEnter(Collider local, Collider other,Vector2 intersecPoint) { }
-
-        /// <summary>
-        /// phisicsUpdate (work in progress) autoupdate flags that can be used to compute collisions 
-        /// </summary>
-        public void phisicsUpdate()
-        {
-            //by now, it change
-            if (speed == 0 || direction == Vector2.Zero)
-                sleeping = true;
-            else
-                sleeping = false;
-        }
         #endregion
     }
 }

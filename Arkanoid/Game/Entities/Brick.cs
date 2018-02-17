@@ -26,6 +26,7 @@ namespace Arkanoid.Entities
             position = new Vector2(x, y);
             size = new Vector2(40, 20);
             this.type = type;
+            pasive = true;
         }
 
         public override void Initialize()
@@ -43,7 +44,7 @@ namespace Arkanoid.Entities
 
         public override void Update(GameTime gameTime)
         {
-        
+
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch SB)
@@ -54,7 +55,11 @@ namespace Arkanoid.Entities
         public override void OnCollisionEnter(Collider local, Collider other, Vector2 intersecPoint)
         {
             if (other.Owner.name == "Ball")
+            {
                 destroy = true;
+                RemoveCollider(local);
+            }
+
         }
     }
 }
