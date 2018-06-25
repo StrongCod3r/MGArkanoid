@@ -28,41 +28,47 @@ namespace Arkanoid.Entities
         {
             this.tag = "Player";
             this.name = "Paddle";
-
-            position.X = x-200;
-            position.Y = y - 400;
-            size.X = (int)4.0f * gain;
-            size.Y = (int)2.25f * gain;
+            position.X = x;
+            position.Y = y;
+            size = new Vector2(200, 90);
             speed = 350;
-            pasive = false;
+
+            //position.X = x-200;
+            //position.Y = y - 400;
+            //size.X = (int)4.0f * gain;
+            //size.Y = (int)2.25f * gain;
+            //speed = 350;
+            //pasive = false;
         }
 
         public override void Initialize()
         {
-            float scale = this.gain*4f;
+            //float scale = this.gain*4f;
 
 
-            AddCollider(new VectorCollider(new Vector2(0.13f * scale, 0.36f * scale), new Vector2(0.13f * scale, 0.32f * scale)));
-            AddCollider(new VectorCollider(new Vector2(0.13f * scale, 0.32f * scale), new Vector2(0.232f * scale, 0.255f * scale)));
-            AddCollider(new VectorCollider(new Vector2(0.232f * scale, 0.255f * scale), new Vector2(0.275f * scale, 0.255f * scale)));
-            AddCollider(new VectorCollider(new Vector2(0.275f * scale, 0.255f * scale), new Vector2(0.275f * scale, 0.275f * scale)));
-            AddCollider(new VectorCollider(new Vector2(0.275f * scale, 0.275f * scale), new Vector2(0.30f * scale, 0.290f * scale)));
-            AddCollider(new VectorCollider(new Vector2(0.30f * scale, 0.290f * scale), new Vector2(0.317f * scale, 0.293f * scale)));
-            AddCollider(new VectorCollider(new Vector2(0.317f * scale, 0.293f * scale), new Vector2(0.332f * scale, 0.313f * scale)));
-            AddCollider(new VectorCollider(new Vector2(0.332f * scale, 0.313f * scale), new Vector2(0.35f * scale, 0.323f * scale)));
+            //AddCollider(new VectorCollider(new Vector2(0.13f * scale, 0.36f * scale), new Vector2(0.13f * scale, 0.32f * scale)));
+            //AddCollider(new VectorCollider(new Vector2(0.13f * scale, 0.32f * scale), new Vector2(0.232f * scale, 0.255f * scale)));
+            //AddCollider(new VectorCollider(new Vector2(0.232f * scale, 0.255f * scale), new Vector2(0.275f * scale, 0.255f * scale)));
+            //AddCollider(new VectorCollider(new Vector2(0.275f * scale, 0.255f * scale), new Vector2(0.275f * scale, 0.275f * scale)));
+            //AddCollider(new VectorCollider(new Vector2(0.275f * scale, 0.275f * scale), new Vector2(0.30f * scale, 0.290f * scale)));
+            //AddCollider(new VectorCollider(new Vector2(0.30f * scale, 0.290f * scale), new Vector2(0.317f * scale, 0.293f * scale)));
+            //AddCollider(new VectorCollider(new Vector2(0.317f * scale, 0.293f * scale), new Vector2(0.332f * scale, 0.313f * scale)));
+            //AddCollider(new VectorCollider(new Vector2(0.332f * scale, 0.313f * scale), new Vector2(0.35f * scale, 0.323f * scale)));
 
-            AddCollider(new VectorCollider(new Vector2(0.35f * scale, 0.323f * scale), new Vector2(0.654f * scale, 0.323f * scale)));
+            //AddCollider(new VectorCollider(new Vector2(0.35f * scale, 0.323f * scale), new Vector2(0.654f * scale, 0.323f * scale)));
 
-            AddCollider(new VectorCollider(new Vector2(0.65f * scale, 0.323f * scale), new Vector2(0.668f * scale, 0.313f * scale)));
-            AddCollider(new VectorCollider(new Vector2(0.668f * scale, 0.313f * scale), new Vector2(0.683f * scale, 0.293f * scale)));
-            AddCollider(new VectorCollider(new Vector2(0.683f * scale, 0.293f * scale), new Vector2(0.70f * scale, 0.290f * scale)));
-            AddCollider(new VectorCollider(new Vector2(0.70f * scale, 0.290f * scale), new Vector2(0.725f * scale, 0.275f * scale)));
-            AddCollider(new VectorCollider(new Vector2(0.725f * scale, 0.275f * scale), new Vector2(0.725f * scale, 0.255f * scale)));
-            AddCollider(new VectorCollider(new Vector2(0.725f * scale, 0.255f * scale), new Vector2(0.768f * scale, 0.255f * scale)));
-            AddCollider(new VectorCollider(new Vector2(0.768f * scale, 0.255f * scale), new Vector2(0.87f * scale, 0.32f * scale)));
-            AddCollider(new VectorCollider(new Vector2(0.87f * scale, 0.32f * scale), new Vector2(0.87f * scale, 0.36f * scale)));
+            //AddCollider(new VectorCollider(new Vector2(0.65f * scale, 0.323f * scale), new Vector2(0.668f * scale, 0.313f * scale)));
+            //AddCollider(new VectorCollider(new Vector2(0.668f * scale, 0.313f * scale), new Vector2(0.683f * scale, 0.293f * scale)));
+            //AddCollider(new VectorCollider(new Vector2(0.683f * scale, 0.293f * scale), new Vector2(0.70f * scale, 0.290f * scale)));
+            //AddCollider(new VectorCollider(new Vector2(0.70f * scale, 0.290f * scale), new Vector2(0.725f * scale, 0.275f * scale)));
+            //AddCollider(new VectorCollider(new Vector2(0.725f * scale, 0.275f * scale), new Vector2(0.725f * scale, 0.255f * scale)));
+            //AddCollider(new VectorCollider(new Vector2(0.725f * scale, 0.255f * scale), new Vector2(0.768f * scale, 0.255f * scale)));
+            //AddCollider(new VectorCollider(new Vector2(0.768f * scale, 0.255f * scale), new Vector2(0.87f * scale, 0.32f * scale)));
+            //AddCollider(new VectorCollider(new Vector2(0.87f * scale, 0.32f * scale), new Vector2(0.87f * scale, 0.36f * scale)));
 
-
+            AddCollider(new CircleCollider() { X = -50, Y = 15, Radius = 20});
+            AddCollider(new RectCollider() {X = 50, Y = 40, Widht = 100, Height = 40 });
+            AddCollider(new CircleCollider() { X = 50, Y = 15, Radius = 20 });
         }
 
         public override void LoadContent()

@@ -74,7 +74,7 @@ namespace Engine2D
         public virtual void Update(GameTime gameTime){ }
         public virtual void Draw(GameTime gameTime, SpriteBatch SB) { }
 
-        public virtual void OnCollisionEnter(Collider local, Collider other,Vector2 intersecPoint) { }
+        public virtual void OnCollisionEnter(Collider local, Collider other) { }
         #endregion
     }
 }

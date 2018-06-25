@@ -46,8 +46,8 @@ namespace Arkanoid.Entities
         public override void Initialize()
         {
             this.name = "Ball";
-            //AddCollider(new CircleCollider() { /*Radius = 50*/});
-            AddCollider(new VectorCollider(new Vector2(0,10), new Vector2(20, 20)));
+            AddCollider(new CircleCollider() { /*Radius = 50*/});
+            //AddCollider(new VectorCollider(new Vector2(0,10), new Vector2(20, 20)));
             //AddCollider(new RectCollider());
             //AddCollider(new VectorCollider(1, 1));
         }
@@ -161,16 +161,14 @@ namespace Arkanoid.Entities
             position.Y = y;
         }
 
-        public override void OnCollisionEnter(Collider local, Collider other,Vector2 intersecPoint)
+        public override void OnCollisionEnter(Collider local, Collider other)
         {
-            //isPaddleCollide |= other.Owner.name.Equals("Paddle");
+            isPaddleCollide |= other.Owner.name.Equals("Paddle");
 
-            this.normalCollide = other.normal;
+            //this.normalCollide = other.normal;
 
-            if (other.Owner.tag.Equals("Player") || local.Owner.tag.Equals("Player"))
-                Game.Window.Title = "BALL ==> PADDLE";
-            intersectionTest = intersecPoint;
-            prove = (VectorCollider)other;
+            //if (other.Owner.tag.Equals("Player") || local.Owner.tag.Equals("Player"))
+            //    Game.Window.Title = "BALL ==> PADDLE";
         }
 
         #endregion 

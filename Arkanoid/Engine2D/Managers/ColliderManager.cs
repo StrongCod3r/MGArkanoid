@@ -38,44 +38,22 @@ namespace Engine2D.Managers
             //{
                 elapsedTime = 0;
             //=====
-            Vector2 intersecPoint;
                 for (int i = 0; i < colliders.Count; i++)
                 {
-                    //we do not check collisions of not moving entity with other not moving entity
-                    if (colliders[i].Owner.pasive)
-                    {
-                        continue;
-                    }
-
                     for (int j = i + 1; j < colliders.Count; j++)
                     {
-                        if (!ReferenceEquals(colliders[i].Owner, colliders[j].Owner) && posibleCollitions(colliders[i],colliders[j]))
+                        if (!ReferenceEquals(colliders[i].Owner, colliders[j].Owner) && colliders[i].enable && colliders[j].enable)
                         {
-                            if (IsColliding(colliders[i], colliders[j],out intersecPoint))
+                            if (IsColliding(colliders[i], colliders[j]))
                             {
-                                colliders[i].Owner.OnCollisionEnter(colliders[i], colliders[j],intersecPoint);
-                                colliders[j].Owner.OnCollisionEnter(colliders[j], colliders[i],intersecPoint);
+                                colliders[i].Owner.OnCollisionEnter(colliders[i], colliders[j]);
+                                colliders[j].Owner.OnCollisionEnter(colliders[j], colliders[i]);
                             }
                         }
                     }
                 }
             //}
 
-        }
-
-        private bool posibleCollitions(Collider collider1,Collider collider2)
-        {
-            //give collition cases for active elements, for example, Paddle will never collide with bricks or other pasive entities
-            switch (collider1.Owner.name)
-            {
-                case "Ball":
-                    return true;
-                case "Paddle":
-                    if (!collider2.Owner.pasive)
-                        return true;
-                    break;
-            }
-            return false;
         }
 
         private void GetColliders()
@@ -92,25 +70,16 @@ namespace Engine2D.Managers
         }
 
         #region METHODS COLLIDERS
-        public bool IsColliding(Collider obj1, Collider obj2,out Vector2 intersecPoint)
+        public bool IsColliding(Collider obj1, Collider obj2)
         {
-            intersecPoint = Vector2.Zero;
-            if (obj1.Type == TypeCollider.Vector && obj2.Type == TypeCollider.Vector)
-                return CheckCollision(obj1 as VectorCollider, obj2 as VectorCollider,out intersecPoint);
-
+            if (obj1.Type == TypeCollider.Rectangle && obj2.Type == TypeCollider.Rectangle)
+                return CheckCollision(obj1 as RectCollider, obj2 as RectCollider);
             else if (obj1.Type == TypeCollider.Circle && obj2.Type == TypeCollider.Circle)
                 return CheckCollision(obj1 as CircleCollider, obj2 as CircleCollider);
+            else if (obj1.Type == TypeCollider.Circle && obj2.Type == TypeCollider.Rectangle)
+                return CheckCollision(obj1 as CircleCollider, obj2 as RectCollider);
 
-            else if (obj1.Type == TypeCollider.Circle && obj2.Type == TypeCollider.Vector)
-                return CheckCollision(obj2 as VectorCollider, obj1 as CircleCollider, out intersecPoint);
-            else 
-                return CheckCollision(obj1 as VectorCollider, obj2 as CircleCollider, out intersecPoint);
-
-        }
-
-        public bool CheckCollision(RectCollider rect1, RectCollider rect2)
-        {
-            return rect1.Rect.Intersects(rect2.Rect);
+            return false;
         }
 
         public bool CheckCollision(CircleCollider circle, RectCollider rect)
@@ -140,6 +109,11 @@ namespace Engine2D.Managers
                 return true;
 
             return false;
+        }
+
+        public bool CheckCollision(RectCollider rect1, RectCollider rect2)
+        {
+            return rect1.Rect.Intersects(rect2.Rect);
         }
 
         /// <summary>
