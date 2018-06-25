@@ -6,8 +6,8 @@ Press F12 to enter debuger mode.
 ![](/Doc/arkanoid.png)
 
 
-### Basic Colisión (rectangulo y circulo)
+### Colisión Básica (rectangulo y circulo)
 ![](/Doc/basic_colision.png)
 
-### Vector Colisión (Sin terminar)
+### Colisión Vectorial (Sin terminar)
 ![](/Doc/vector_colision.png)
