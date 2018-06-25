@@ -1,10 +1,8 @@
 # MGArkanoid
-
-## INFO
-Press F12 to enter debuger mode.
-
 ![](/Doc/arkanoid.png)
 
+### INFO
+Press F12 to enter debuger mode.
 
 ### Colisión Básica (rectangulo y circulo)
 ![](/Doc/basic_colision.png)
